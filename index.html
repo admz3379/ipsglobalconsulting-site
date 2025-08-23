@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPS Global Consulting Group - Methodology-Driven GRC & Risk Management</title>
+    <meta name="description" content="iPS Global Consulting Group delivers structured GRC, third-party risk management, technology audit, and AI governance solutions for Fortune 500 companies, educational districts, and nonprofits.">
+    
+    <!-- Security & Privacy Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:; img-src 'self' https: data:; font-src 'self' https: fonts.gstatic.com;">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Privacy & Data Protection -->
+    <meta name="privacy-policy" content="/privacy-policy.html">
+    <meta name="data-protection" content="GDPR, CCPA compliant - Enterprise-grade security">
+    <meta name="author" content="iPS Global Consulting - Privacy-First Professional Services">
+    
+    <!-- Tailwind CSS for efficient styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-inter">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold" style="color: #1E3A8A;">iPS</span>
+                        <span class="w-2 h-2 rounded-full ml-1 mr-2" style="background-color: #EA580C;"></span>
+                        <span class="text-lg font-medium" style="color: #374151;">Consulting</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium flex items-center">
+                            Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <a href="#grc-maturity" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">GRC Maturity Model</a>
+                            <a href="#third-party-risk" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Third-Party Risk Lifecycle</a>
+                            <a href="#tech-risk-audit" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Technology Risk & Audit</a>
+                            <a href="#program-management" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Program Management & PMO</a>
+                            <a href="#training-platform" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Training & Learning Platform</a>
+                            <a href="#ai-governance" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">AI & Emerging Tech Governance</a>
+                            <a href="#language-services" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Language Services</a>
+                        </div>
+                    </div>
+                    <a href="#clients-served" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Clients</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Contact Us</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Home</a>
+                <div class="px-3 py-2">
+                    <button id="mobile-services-btn" class="flex items-center text-base font-medium text-gray-700 hover:text-blue-600">
+                        Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="mobile-services-menu" class="hidden ml-4 mt-2 space-y-1">
+                        <a href="#grc-maturity" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">GRC Maturity Model</a>
+                        <a href="#third-party-risk" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Third-Party Risk Lifecycle</a>
+                        <a href="#tech-risk-audit" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Technology Risk & Audit</a>
+                        <a href="#program-management" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Program Management & PMO</a>
+                        <a href="#training-platform" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Training & Learning Platform</a>
+                        <a href="#ai-governance" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">AI & Emerging Tech Governance</a>
+                        <a href="#language-services" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600">Language Services</a>
+                    </div>
+                </div>
+                <a href="#clients-served" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Clients</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">About</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span style="color: #EA580C">Risk</span>, <span style="color: #1E3A8A">Technology</span><br>
+                    & <span style="color: #059669">Transformation</span> <span style="color: #374151">Advisory</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+                    Methodology-driven consulting solutions across Risk Management, Technology Governance, 
+                    and Organizational Transformation for Fortune 500, Government, and Global Organizations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#services" class="text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #1E3A8A;" onmouseover="this.style.backgroundColor='#1E40AF'" onmouseout="this.style.backgroundColor='#1E3A8A'">
+                        Work With Us
+                    </a>
+                    <a href="#clients-served" class="text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #059669;" onmouseover="this.style.backgroundColor='#047857'" onmouseout="this.style.backgroundColor='#059669'">
+                        See Our Clients
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="bg-white bg-opacity-10 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <p class="text-blue-200 text-xs font-medium tracking-widest uppercase mb-6">EXPERTISE ACROSS INDUSTRIES</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <a href="fortune-500-financial-services.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                            <p class="text-white text-sm font-medium">Fortune 500 Financial Services</p>
+                        </a>
+                        <a href="government-public-sector.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                            <p class="text-white text-sm font-medium">Government & Public Sector</p>
+                        </a>
+                        <a href="educational-institutions.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                            <p class="text-white text-sm font-medium">Educational Institutions</p>
+                        </a>
+                        <a href="global-non-profit-organizations.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                            <p class="text-white text-sm font-medium">Global Non-Profit Organizations</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #1E3A8A;">
+                    Our Consulting Delivery Models
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: #374151;">
+                    We don't just advise—we deliver through proven, structured methodologies that show clients 
+                    exactly where they are today and where we'll take them.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- GRC Maturity Model -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #1E3A8A; color: white;">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">GRC Maturity Model</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            Transform your governance from ad hoc processes to optimized, automated compliance
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background-color: #1E3A8A;"></div>
+                            <span class="font-medium">Transform chaotic compliance into strategic advantage</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#grc-maturity" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background-color: #1E3A8A;" onmouseover="this.style.backgroundColor='#1E40AF'" onmouseout="this.style.backgroundColor='#1E3A8A'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Third-Party Risk Lifecycle -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #EA580C; color: white;">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Third-Party Risk Lifecycle</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            End-to-end vendor risk management from onboarding to offboarding
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background-color: #EA580C;"></div>
+                            <span class="font-medium">Stop vendor surprises before they become crises</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#third-party-risk" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background-color: #EA580C;" onmouseover="this.style.backgroundColor='#DC2626'" onmouseout="this.style.backgroundColor='#EA580C'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Technology Risk & Audit -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%); color: white;">
+                            <i class="fas fa-laptop-code text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Technology Risk & Audit</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            IT risk management and audit readiness aligned to SOX, GLBA, and PCI standards
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);"></div>
+                            <span class="font-medium">Turn IT audits from painful to predictable</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#tech-risk-audit" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);" onmouseover="this.style.background='linear-gradient(135deg, #1E40AF 0%, #047857 100%)'" onmouseout="this.style.background='linear-gradient(135deg, #1E3A8A 0%, #059669 100%)'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program Management & PMO -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #059669; color: white;">
+                            <i class="fas fa-project-diagram text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Agile PMO & Process Improvement</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            Structured project delivery with measurable outcomes and continuous improvement
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background-color: #059669;"></div>
+                            <span class="font-medium">Deliver projects on time, every time</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#program-management" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background-color: #059669;" onmouseover="this.style.backgroundColor='#047857'" onmouseout="this.style.backgroundColor='#059669'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Training & Learning Platform -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #374151; color: white;">
+                            <i class="fas fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Training & Learning Platform</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            Lifecycle-driven learning solutions with analytics and continuous refinement
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background-color: #374151;"></div>
+                            <span class="font-medium">Build cybersecurity awareness that actually works</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#training-platform" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background-color: #374151;" onmouseover="this.style.backgroundColor='#4B5563'" onmouseout="this.style.backgroundColor='#374151'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AI & Emerging Tech Governance -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow" style="background-color: #F3F4F6;">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%); color: white;">
+                            <i class="fas fa-robot text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: #1E3A8A;">AI & Emerging Tech Governance</h3>
+                        <p class="text-sm mb-4" style="color: #374151;">
+                            Structured AI governance using NIST AI RMF and EU AI Act frameworks
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm" style="color: #374151;">
+                            <div class="w-3 h-3 rounded-full mr-2" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);"></div>
+                            <span class="font-medium">Navigate AI risks while capturing AI opportunities</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#ai-governance" class="text-white px-6 py-2 rounded-md font-semibold transition-colors" style="background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);" onmouseover="this.style.background='linear-gradient(135deg, #1E40AF 0%, #047857 100%)'" onmouseout="this.style.background='linear-gradient(135deg, #1E3A8A 0%, #059669 100%)'">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Service Model Sections -->
+    
+    <!-- GRC Maturity Model -->
+    <section id="grc-maturity" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                        GRC Maturity Model
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Transform your governance from ad hoc processes to optimized, automated compliance. 
+                        Our model shows clients exactly where they are today vs. where we'll take them.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-red-600 font-bold text-sm">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Ad Hoc</h4>
+                                <p class="text-gray-600 text-sm">Policies exist but are not enforced consistently</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-orange-600 font-bold text-sm">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Defined</h4>
+                                <p class="text-gray-600 text-sm">Frameworks (NIST/ISO) documented with some oversight</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-yellow-600 font-bold text-sm">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Managed</h4>
+                                <p class="text-gray-600 text-sm">Consistent processes with compliance-driven operations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-green-600 font-bold text-sm">4</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Integrated</h4>
+                                <p class="text-gray-600 text-sm">GRC embedded into enterprise workflows seamlessly</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-blue-600 font-bold text-sm">5</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Optimized</h4>
+                                <p class="text-gray-600 text-sm">Automated, dashboard-driven, proactive governance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h5 class="font-semibold text-gray-900 mb-2">Use Cases:</h5>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• Audit preparation and readiness</li>
+                            <li>• Third-party risk management</li>
+                            <li>• Educational district compliance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div id="grc-model-container" class="mb-8">
+                        <!-- Model visualization will be inserted here -->
+                    </div>
+                    <a href="#contact" class="inline-block text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #1E3A8A;" onmouseover="this.style.backgroundColor='#1E40AF'" onmouseout="this.style.backgroundColor='#1E3A8A'">
+                        Start Your GRC Transformation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third-Party Risk Lifecycle Model -->
+    <section id="third-party-risk" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 text-center">
+                    <div id="tpr-model-container" class="mb-8">
+                        <!-- Model visualization will be inserted here -->
+                    </div>
+                    <a href="#contact" class="inline-block text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #EA580C;" onmouseover="this.style.backgroundColor='#DC2626'" onmouseout="this.style.backgroundColor='#EA580C'">
+                        Secure Your Vendor Ecosystem
+                    </a>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                        Third-Party Risk Lifecycle Model
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Comprehensive vendor risk management from onboarding to offboarding. 
+                        We simplify vendor governance through five clear stages.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-user-plus text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Onboarding</h4>
+                                <p class="text-gray-600 text-sm">Vendor due diligence and contract review processes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-clipboard-check text-green-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Assessment</h4>
+                                <p class="text-gray-600 text-sm">Control checks and SaaS risk evaluation frameworks</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-chart-line text-yellow-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Monitoring</h4>
+                                <p class="text-gray-600 text-sm">Continuous oversight with SLA performance dashboards</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-exclamation-triangle text-orange-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Exception Handling</h4>
+                                <p class="text-gray-600 text-sm">Structured remediation workflows and escalation paths</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-sync-alt text-purple-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Renewal/Exit</h4>
+                                <p class="text-gray-600 text-sm">Contract compliance review and secure offboarding</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Risk & Audit Model -->
+    <section id="tech-risk-audit" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                    Technology Risk & Audit Model
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Frame how we help organizations manage IT risk and achieve audit readiness 
+                    through structured control frameworks aligned to SOX, GLBA, and PCI standards.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="process-step bg-purple-50 border-l-4 border-purple-500">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-search text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Assess</h4>
+                        <p class="text-sm text-gray-600">ITGC testing and comprehensive gap analysis</p>
+                    </div>
+                </div>
+                
+                <div class="process-step bg-blue-50 border-l-4 border-blue-500">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-drafting-compass text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Design</h4>
+                        <p class="text-sm text-gray-600">Control frameworks aligned to compliance requirements</p>
+                    </div>
+                </div>
+                
+                <div class="process-step bg-green-50 border-l-4 border-green-500">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-rocket text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Deploy</h4>
+                        <p class="text-sm text-gray-600">Embed controls into CI/CD and SaaS workflows</p>
+                    </div>
+                </div>
+                
+                <div class="process-step bg-yellow-50 border-l-4 border-yellow-500">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-check-circle text-yellow-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Validate</h4>
+                        <p class="text-sm text-gray-600">Audit walkthroughs and control testing</p>
+                    </div>
+                </div>
+                
+                <div class="process-step bg-indigo-50 border-l-4 border-indigo-500">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-chart-bar text-indigo-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Report</h4>
+                        <p class="text-sm text-gray-600">Executive dashboards and compliance briefings</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="bg-gray-100 p-6 rounded-lg inline-block">
+                    <h5 class="font-semibold text-gray-900 mb-2">Featured Success:</h5>
+                    <div class="space-y-2">
+                        <p class="text-gray-700"><strong>Capital One:</strong> Technology Risk Program - Implemented SOX-compliant ITGC framework</p>
+                        <p class="text-gray-700"><strong>GM Financial:</strong> SaaS GRC Implementation - Automated compliance monitoring for cloud services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Management & Process Improvement -->
+    <section id="program-management" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                        Agile PMO & Process Improvement
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Make project delivery structured, measurable, and repeatable. Our Agile PMO approach 
+                        ensures successful outcomes through continuous feedback and lessons learned.
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                        <h5 class="font-semibold text-gray-900 mb-4">Our Agile PMO Cycle:</h5>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Define scope, governance, and compliance requirements</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Design process maps and stakeholder workflows</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Develop automation, controls, and training programs</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Deploy project and measure KPI performance</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Improve through continuous feedback loops</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="case-study-card p-4 rounded-lg">
+                            <h6 class="font-semibold text-gray-900">School District Program Management</h6>
+                            <p class="text-sm text-gray-600 mt-1">Comprehensive program management for district-wide compliance and vendor management initiatives</p>
+                        </div>
+                        <div class="case-study-card p-4 rounded-lg">
+                            <h6 class="font-semibold text-gray-900">State Government Process Improvement</h6>
+                            <p class="text-sm text-gray-600 mt-1">Structured Agile PMO approach for mission-critical government program delivery</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold text-gray-900 mb-6">Key Benefits</h4>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-orange-600">85%</div>
+                                <div class="text-sm text-gray-600">On-Time Delivery</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-orange-600">92%</div>
+                                <div class="text-sm text-gray-600">Stakeholder Satisfaction</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-orange-600">78%</div>
+                                <div class="text-sm text-gray-600">Cost Efficiency</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-orange-600">96%</div>
+                                <div class="text-sm text-gray-600">Compliance Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#contact" class="inline-block text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #059669;" onmouseover="this.style.backgroundColor='#047857'" onmouseout="this.style.backgroundColor='#059669'">
+                            Optimize Your Programs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Learning Platform -->
+    <section id="training-platform" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-lg">
+                        <h4 class="text-xl font-bold text-gray-900 mb-6 text-center">Learning Lifecycle Approach</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center bg-white p-3 rounded-md shadow-sm">
+                                <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-teal-600 font-bold text-sm">1</span>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900 text-sm">Needs Analysis</div>
+                                    <div class="text-xs text-gray-600">Identify gaps and requirements</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-white p-3 rounded-md shadow-sm">
+                                <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-teal-600 font-bold text-sm">2</span>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900 text-sm">Content Design</div>
+                                    <div class="text-xs text-gray-600">Build tailored learning modules</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-white p-3 rounded-md shadow-sm">
+                                <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-teal-600 font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900 text-sm">Delivery Methods</div>
+                                    <div class="text-xs text-gray-600">LMS, workshops, and hybrid</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-white p-3 rounded-md shadow-sm">
+                                <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-teal-600 font-bold text-sm">4</span>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900 text-sm">Performance Measurement</div>
+                                    <div class="text-xs text-gray-600">Analytics and KPI tracking</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-white p-3 rounded-md shadow-sm">
+                                <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-teal-600 font-bold text-sm">5</span>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900 text-sm">Continuous Refinement</div>
+                                    <div class="text-xs text-gray-600">Update based on feedback</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                        Training & Learning Platform Model
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Frame learning solutions as a complete lifecycle, not just one-off training events. 
+                        We create sustainable learning ecosystems that evolve with your organization.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-400">
+                            <h5 class="font-semibold text-teal-900 mb-2">
+                                <i class="fas fa-shield-alt text-teal-600 mr-2"></i>
+                                Cybersecurity Awareness Programs
+                            </h5>
+                            <p class="text-teal-800 text-sm">
+                                Comprehensive security training with real-world scenarios and continuous assessment
+                            </p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                            <h5 class="font-semibold text-blue-900 mb-2">
+                                <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                                District Staff Training
+                            </h5>
+                            <p class="text-blue-800 text-sm">
+                                Educational institution-specific training programs with compliance focus
+                            </p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                            <h5 class="font-semibold text-purple-900 mb-2">
+                                <i class="fas fa-laptop text-purple-600 mr-2"></i>
+                                Learning Management Systems
+                            </h5>
+                            <p class="text-purple-800 text-sm">
+                                Custom LMS builds with advanced analytics and engagement tracking
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="#contact" class="inline-block text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #374151;" onmouseover="this.style.backgroundColor='#4B5563'" onmouseout="this.style.backgroundColor='#374151'">
+                            Transform Your Training
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI & Emerging Tech Governance -->
+    <section id="ai-governance" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                    AI & Emerging Technology Governance
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Show leadership you have a repeatable methodology for AI and emerging technology oversight. 
+                    Stay ahead of regulations while enabling innovation.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-search-plus text-2xl text-indigo-600"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Identify</h4>
+                        <p class="text-gray-600 text-sm mt-2">
+                            Map AI and emerging technology use cases across your organization
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clipboard-check text-2xl text-indigo-600"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Assess</h4>
+                        <p class="text-gray-600 text-sm mt-2">
+                            Apply NIST AI RMF and EU AI Act frameworks to evaluate risks
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cogs text-2xl text-indigo-600"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Control</h4>
+                        <p class="text-gray-600 text-sm mt-2">
+                            Implement governance frameworks and risk management checkpoints
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Monitor</h4>
+                        <p class="text-gray-600 text-sm mt-2">
+                            Ongoing compliance monitoring with real-time dashboards and alerts
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sync-alt text-2xl text-indigo-600"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Adapt</h4>
+                        <p class="text-gray-600 text-sm mt-2">
+                            Update policies and procedures as regulations and technology evolve
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-indigo-900 text-white p-8 rounded-lg text-center">
+                <h4 class="text-2xl font-bold mb-4">Ready for the Future of AI Governance?</h4>
+                <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">
+                    Position your organization for success with both Fortune 500 companies and Educational institutions. 
+                    Our AI governance model scales to meet regulatory requirements while enabling innovation.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <span class="bg-indigo-700 px-6 py-2 rounded-md font-semibold">Fortune 500 Ready</span>
+                    <span class="bg-indigo-700 px-6 py-2 rounded-md font-semibold">Education AI Policies</span>
+                    <span class="bg-indigo-700 px-6 py-2 rounded-md font-semibold">NIST AI RMF Aligned</span>
+                </div>
+                <div class="mt-6">
+                    <a href="#contact" class="bg-white text-indigo-900 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                        Start AI Governance Planning
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Services Section -->
+    <section id="language-services" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                    Professional Language Services
+                </h2>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #374151;">
+                    In partnership with medical organizations, financial services, and government agencies, 
+                    we provide comprehensive language support to better serve diverse communities.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Medical Partnership -->
+                <div class="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center" style="background-color: #F3F4F6;">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #374151; color: white;">
+                        <i class="fas fa-heartbeat text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Medical Organizations</h4>
+                    <p class="text-sm mb-4" style="color: #374151;">HIPAA-compliant medical interpretation and translation services</p>
+                    <a href="#contact" class="font-semibold text-sm transition-colors" style="color: #059669;" onmouseover="this.style.color='#047857'" onmouseout="this.style.color='#059669'">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Financial Services Partnership -->
+                <div class="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center" style="background-color: #F3F4F6;">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #374151; color: white;">
+                        <i class="fas fa-university text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Financial Services</h4>
+                    <p class="text-sm mb-4" style="color: #374151;">Banking and financial advisory language support with regulatory compliance</p>
+                    <a href="#contact" class="font-semibold text-sm transition-colors" style="color: #059669;" onmouseover="this.style.color='#047857'" onmouseout="this.style.color='#059669'">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Government Partnership -->
+                <div class="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center" style="background-color: #F3F4F6;">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #374151; color: white;">
+                        <i class="fas fa-landmark text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" style="color: #1E3A8A;">Government Agencies</h4>
+                    <p class="text-sm mb-4" style="color: #374151;">ADA-compliant public service language access including legal interpretation</p>
+                    <a href="#contact" class="font-semibold text-sm transition-colors" style="color: #059669;" onmouseover="this.style.color='#047857'" onmouseout="this.style.color='#059669'">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Language Capabilities Summary -->
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h4 class="text-xl font-bold text-gray-900 mb-4">50+ Languages | 24/7 Availability | Certified Professionals</h4>
+                <p class="text-gray-600 mb-6">Multiple modalities: in-person, phone, and video interpretation</p>
+                <a href="#contact" class="inline-block text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #374151;" onmouseover="this.style.backgroundColor='#4B5563'" onmouseout="this.style.backgroundColor='#374151'">
+                    Request Language Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Served Section -->
+    <section id="clients-served" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                    Clients Served
+                </h2>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #374151;">
+                    Trusted by Fortune 500 companies, international organizations, and global development agencies 
+                    to deliver risk management, technology governance, and transformation solutions.
+                </p>
+            </div>
+            
+            <!-- Fortune 500 & Financial Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-lg border-l-4 border-teal-500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 text-teal-800">Capital One</h4>
+                    <p class="text-gray-700 mb-4">
+                        Delivered third-party risk management and technology governance frameworks for one of America's largest banks.
+                    </p>
+                    <div class="text-sm text-teal-700 bg-teal-100 px-3 py-1 rounded-full inline-block">
+                        Fortune 500 Financial Services
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 text-blue-800">GM Financial</h4>
+                    <p class="text-gray-700 mb-4">
+                        GRC SaaS solution onboarding planning with EMPO standard implementation for automotive financial services.
+                    </p>
+                    <div class="text-sm text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block">
+                        Automotive Financial Services
+                    </div>
+                </div>
+            </div>
+            
+            <!-- International Organizations -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-lg border-l-4 border-green-500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 text-green-800">The World Bank</h4>
+                    <p class="text-gray-700 mb-4">
+                        Digital transformation, ARTF program (Afghanistan Reconstruction Trust Fund), donor engagement, and IT audit services.
+                    </p>
+                    <div class="text-sm text-green-700 bg-green-100 px-3 py-1 rounded-full inline-block">
+                        International Development
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-8 rounded-lg border-l-4 border-purple-500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 text-purple-800">USAID & DAI</h4>
+                    <p class="text-gray-700 mb-4">
+                        Risk, compliance, and governance for local governance strengthening programs across multiple countries.
+                    </p>
+                    <div class="text-sm text-purple-700 bg-purple-100 px-3 py-1 rounded-full inline-block">
+                        International Development
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NGOs & Community Organizations -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-lg border-l-4 border-red-500">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-red-800">Save The Children</h4>
+                    <p class="text-gray-700 text-sm mb-3">
+                        Global monitoring, evaluation, risk evaluation, data analytics, and management information system development.
+                    </p>
+                    <div class="text-xs text-red-700 bg-red-100 px-2 py-1 rounded-full inline-block">
+                        Global NGO
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-lg border-l-4 border-orange-500">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-orange-800">Ethiopian Community Development Council (ECDC)</h4>
+                    <p class="text-gray-700 text-sm mb-3">
+                        Compliance, project management, and community engagement for refugee resettlement programs.
+                    </p>
+                    <div class="text-xs text-orange-700 bg-orange-100 px-2 py-1 rounded-full inline-block">
+                        Community Development
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-lg border-l-4 border-cyan-500">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-cyan-800">Lutheran Social Services</h4>
+                    <p class="text-gray-700 text-sm mb-3">
+                        Project management, program improvement, compliance, and community engagement for social service delivery.
+                    </p>
+                    <div class="text-xs text-cyan-700 bg-cyan-100 px-2 py-1 rounded-full inline-block">
+                        Social Services
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="mt-16 text-center">
+                <div class="bg-gray-900 text-white p-8 rounded-lg">
+                    <h4 class="text-2xl font-bold mb-4">Ready to Join Our Client Portfolio?</h4>
+                    <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                        From Fortune 500 companies to international development organizations, 
+                        we deliver methodology-driven solutions that create lasting impact.
+                    </p>
+                    <a href="#contact" class="text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #059669;" onmouseover="this.style.backgroundColor='#047857'" onmouseout="this.style.backgroundColor='#059669'">
+                        Start Your Transformation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #1E3A8A;">
+                        About iPS Consulting
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        We're not just another consulting firm. We're methodology-driven experts who believe 
+                        in showing clients exactly where they are today and where we'll take them through 
+                        structured, repeatable delivery models.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-chart-line text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900">Structured Methodologies</h5>
+                                <p class="text-gray-600 text-sm">Every engagement follows proven frameworks with measurable outcomes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-users text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900">Diverse Client Base</h5>
+                                <p class="text-gray-600 text-sm">Fortune 500 companies, educational districts, and nonprofit organizations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-award text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900">Proven Results</h5>
+                                <p class="text-gray-600 text-sm">Scalable solutions that grow with your organization's needs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h5 class="font-semibold text-blue-900 mb-2">Our Promise</h5>
+                        <p class="text-blue-800 text-sm">
+                            Whether you're a Fortune 500 company, educational district, or nonprofit, 
+                            we deliver structured, repeatable solutions that position you as a 
+                            methodology-driven leader in your industry.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why Choose iPS?</h4>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">15+</div>
+                            <div class="text-sm text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">100+</div>
+                            <div class="text-sm text-gray-600">Successful Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">6</div>
+                            <div class="text-sm text-gray-600">Delivery Models</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">98%</div>
+                            <div class="text-sm text-gray-600">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-certificate text-blue-600 mr-3"></i>
+                            <span class="text-gray-700 text-sm">NIST Framework Certified</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-blue-600 mr-3"></i>
+                            <span class="text-gray-700 text-sm">ISO 27001 Expertise</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-blue-600 mr-3"></i>
+                            <span class="text-gray-700 text-sm">Education Sector Specialists</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-building text-blue-600 mr-3"></i>
+                            <span class="text-gray-700 text-sm">Fortune 500 Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 text-white" style="background-color: #1E3A8A;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: #FFFFFF;">
+                    Ready to Transform Your Organization?
+                </h2>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    Let's discuss how our methodology-driven approach can help you achieve 
+                    structured, measurable results in GRC, risk management, and compliance.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Get Started Today</h3>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="text-center">
+                            <h5 class="font-semibold mb-2 text-white">Ready to Get Started?</h5>
+                            <p class="text-blue-100 text-sm mb-4">Complete the contact form and our consultant will reach out within 2-3 business days</p>
+                            <div class="flex items-center justify-center">
+                                <div class="text-center">
+                                    <p class="text-blue-200 text-sm">📍 Dallas, TX</p>
+                                    <a href="mailto:info@ipsglobalconsulting.com" class="text-blue-300 hover:text-white text-sm">info@ipsglobalconsulting.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg text-gray-900">
+                    <!-- Security & Privacy Notice -->
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-shield-alt text-green-600 mr-3 mt-1"></i>
+                            <div>
+                                <h5 class="font-semibold text-green-900 mb-1">Secure & Private Contact</h5>
+                                <p class="text-green-800 text-sm">Your information is encrypted and protected. We never sell data. <a href="privacy-policy.html" target="_blank" class="underline">Privacy Policy</a> • <a href="mailto:info@ipsglobalconsulting.com" class="underline">Privacy Rights</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-6">Send Us a Message</h4>
+                    
+                    <form id="contact-form" class="space-y-6" name="contact" method="POST" data-netlify="true" action="/thank-you" netlify-honeypot="bot-field">
+                        <!-- Honeypot field for spam protection -->
+                        <input type="hidden" name="bot-field" />
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Organization</label>
+                            <input type="text" id="company" name="company" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                            <select id="service" name="service" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select a Service</option>
+                                <option value="grc-maturity">GRC Maturity Model</option>
+                                <option value="third-party-risk">Third-Party Risk Lifecycle</option>
+                                <option value="tech-risk-audit">Technology Risk & Audit</option>
+                                <option value="program-management">Program Management & PMO</option>
+                                <option value="training-platform">Training & Learning Platform</option>
+                                <option value="ai-governance">AI & Emerging Tech Governance</option>
+                                <option value="language-services">Language Services</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                      placeholder="Tell us about your current challenges and goals..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold text-white">iPS</span>
+                        <span class="w-2 h-2 rounded-full ml-1 mr-2" style="background-color: #EA580C;"></span>
+                        <span class="text-lg font-medium text-gray-300">Consulting</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Risk, Technology & Transformation Advisory for Fortune 500 companies, 
+                        international organizations, and government agencies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Services</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#grc-maturity" class="text-gray-400 hover:text-white">GRC Maturity Model</a></li>
+                        <li><a href="#third-party-risk" class="text-gray-400 hover:text-white">Third-Party Risk</a></li>
+                        <li><a href="#tech-risk-audit" class="text-gray-400 hover:text-white">Technology Risk & Audit</a></li>
+                        <li><a href="#program-management" class="text-gray-400 hover:text-white">Program Management</a></li>
+                        <li><a href="#training-platform" class="text-gray-400 hover:text-white">Training Platform</a></li>
+                        <li><a href="#ai-governance" class="text-gray-400 hover:text-white">AI Governance</a></li>
+                        <li><a href="#language-services" class="text-gray-400 hover:text-white">Language Services</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Industries</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Fortune 500 Companies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Educational Districts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nonprofit Organizations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Financial Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Technology</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold text-white mb-4">Contact</h5>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact Form</a></li>
+                        <li>info@ipsglobalconsulting.com</li>
+                        <li>11133 Shady Trail<br>Dallas, TX 75229</li>
+                    </ul>
+                    
+                    <div class="mt-6">
+                        <h6 class="font-semibold text-white mb-2">Newsletter</h6>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" 
+                                   class="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md text-white text-sm focus:outline-none focus:border-blue-500">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 text-sm">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Privacy & Security Notice -->
+            <div class="border-t border-gray-800 mt-8 pt-6">
+                <div class="bg-gray-800 rounded-lg p-4 mb-6 text-center">
+                    <div class="flex items-center justify-center mb-2">
+                        <i class="fas fa-shield-alt text-green-400 mr-2"></i>
+                        <span class="font-semibold text-green-400">Your Privacy & Security Are Protected</span>
+                    </div>
+                    <p class="text-gray-300 text-xs">
+                        Enterprise-grade encryption • GDPR & CCPA compliant • No data selling • Right to deletion
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-gray-400 text-sm mb-2">
+                        Dallas, TX • © 2025 iPS Global Consulting, LLC Dallas, TX All rights reserved
+                    </p>
+                    <p class="text-gray-400 text-xs">
+                        <a href="privacy-policy.html" class="hover:text-white underline">Privacy Policy</a> | 
+                        <a href="mailto:info@ipsglobalconsulting.com" class="hover:text-white underline">Privacy Rights</a> | 
+                        <a href="mailto:info@ipsglobalconsulting.com" class="hover:text-white underline">Contact</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
