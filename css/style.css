@@ -1,0 +1,174 @@
+/* Custom styles for iPS Consulting */
+
+.font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+}
+
+/* Process step cards styling */
+.process-step {
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Case study cards */
+.case-study-card {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    transition: all 0.3s ease;
+}
+
+.case-study-card:hover {
+    background-color: #F1F5F9;
+    border-color: #CBD5E1;
+    transform: translateY(-2px);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem !important;
+    }
+    
+    .service-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Mobile navigation improvements */
+    #mobile-menu {
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 40;
+    }
+    
+    #mobile-services-menu {
+        transition: all 0.3s ease;
+    }
+    
+    /* Ensure mobile menu button is clickable */
+    #mobile-menu-btn {
+        z-index: 50;
+        position: relative;
+        padding: 8px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+    
+    #mobile-menu-btn:hover {
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    /* Mobile menu styling */
+    #mobile-menu.hidden {
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    #mobile-menu:not(.hidden) {
+        max-height: 500px;
+        overflow: visible;
+    }
+    
+    /* Better touch targets for mobile */
+    #mobile-menu a,
+    #mobile-menu button {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        touch-action: manipulation;
+    }
+}
+
+/* Loading animation for better UX */
+.fade-in {
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced hover effects for interactive elements */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form enhancements */
+.form-input:focus {
+    ring: 2px;
+    ring-color: #3B82F6;
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Button enhancements */
+.btn-primary {
+    background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus indicators for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
