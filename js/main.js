@@ -1,7 +1,7 @@
 // Main JavaScript for iPS Consulting Website
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS
-    emailjs.init("JvnKL8PuiWCmeCLpE");
+    emailjs.init("iL3VaPoDPauBxBP1D");
     // Mobile menu functionality
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');

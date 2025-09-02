@@ -17,7 +17,7 @@ class iPSChatbot {
         // Try to initialize EmailJS immediately
         if (typeof emailjs !== 'undefined') {
             try {
-                emailjs.init("JvnKL8PuiWCmeCLpE");
+                emailjs.init("iL3VaPoDPauBxBP1D");
                 this.emailjsReady = true;
                 console.log('Chatbot EmailJS initialized successfully');
             } catch (error) {
@@ -567,7 +567,7 @@ class iPSChatbot {
                 try {
                     // Check if EmailJS is ready
                     if (!this.emailjsReady && typeof emailjs !== 'undefined') {
-                        emailjs.init("JvnKL8PuiWCmeCLpE");
+                        emailjs.init("iL3VaPoDPauBxBP1D");
                         this.emailjsReady = true;
                     }
                     
