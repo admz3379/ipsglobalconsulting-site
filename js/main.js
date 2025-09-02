@@ -130,6 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             try {
+                // Check EmailJS initialization
+                console.log('EmailJS available:', typeof emailjs !== 'undefined');
+                console.log('EmailJS object:', emailjs);
+                
                 // Prepare EmailJS template parameters
                 const templateParams = {
                     from_name: name,
@@ -142,8 +146,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     source: 'Website Contact Form'
                 };
                 
+                console.log('Sending email with parameters:', templateParams);
+                console.log('Service ID: service_nd74rr8, Template ID: template_co99cdj');
+                
                 // Send email using EmailJS
                 const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
+                
+                console.log('EmailJS result:', result);
                 
                 if (result.status === 200) {
                     // Store form data for thank you page personalization
@@ -164,13 +173,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             } catch (error) {
                 console.error('Email sending failed:', error);
+                console.error('Error details:', error.message, error.status, error.text);
                 
                 // Reset button state
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Show error message
-                showFormError('Sorry, there was an error sending your message. Please try again or email us directly at info@ipsglobalconsulting.com');
+                // Show detailed error message for debugging
+                let errorMessage = 'Sorry, there was an error sending your message. ';
+                if (error.status) {
+                    errorMessage += `Error ${error.status}: ${error.text}. `;
+                } else if (error.message) {
+                    errorMessage += `${error.message}. `;
+                }
+                errorMessage += 'Please try again or email us directly at info@ipsglobalconsulting.com';
+                
+                showFormError(errorMessage);
             }
         });
     }
