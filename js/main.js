@@ -1,5 +1,7 @@
 // Main JavaScript for iPS Consulting Website
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS
+    emailjs.init("JvnKL8PuiWCmeCLpE");
     // Mobile menu functionality
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -101,14 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Basic validation before submitting
-            const name = contactForm.querySelector('input[name="entry.2005620554"]').value;
-            const email = contactForm.querySelector('input[name="entry.1045781291"]').value;
-            const message = contactForm.querySelector('textarea[name="entry.1277502806"]').value;
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const message = contactForm.querySelector('textarea[name="message"]').value;
             
             if (!name || !email || !message) {
-                e.preventDefault();
                 showFormError('Please fill in all required fields.');
                 return;
             }
@@ -116,28 +119,59 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                e.preventDefault();
                 showFormError('Please enter a valid email address.');
                 return;
             }
             
-            // Store form data for thank you page personalization
-            sessionStorage.setItem('contactSubmission', JSON.stringify({
-                name: name,
-                email: email,
-                company: contactForm.querySelector('input[name="entry.839337160"]').value || 'Not provided',
-                service: contactForm.querySelector('select[name="entry.1166974658"]').value || 'General Consultation',
-                message: message,
-                timestamp: new Date().toLocaleString()
-            }));
-            
             // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Let form submit naturally to Google Forms
-            // Hidden iframe will handle the redirect to thank-you.html
+            try {
+                // Prepare EmailJS template parameters
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    company: contactForm.querySelector('input[name="company"]').value || 'Not provided',
+                    service: contactForm.querySelector('select[name="service"]').value || 'General Consultation',
+                    message: message,
+                    to_email: 'info@ipsglobalconsulting.com',
+                    timestamp: new Date().toLocaleString(),
+                    source: 'Website Contact Form'
+                };
+                
+                // Send email using EmailJS
+                const result = await emailjs.send('service_a6ix8ij', 'template_co99cdj', templateParams);
+                
+                if (result.status === 200) {
+                    // Store form data for thank you page personalization
+                    sessionStorage.setItem('contactSubmission', JSON.stringify({
+                        name: name,
+                        email: email,
+                        company: templateParams.company,
+                        service: templateParams.service,
+                        message: message,
+                        timestamp: templateParams.timestamp
+                    }));
+                    
+                    // Success - redirect to thank you page
+                    window.location.href = 'thank-you.html';
+                } else {
+                    throw new Error('EmailJS returned non-200 status');
+                }
+                
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show error message
+                showFormError('Sorry, there was an error sending your message. Please try again or email us directly at info@ipsglobalconsulting.com');
+            }
         });
     }
     

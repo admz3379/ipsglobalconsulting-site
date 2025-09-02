@@ -543,48 +543,47 @@ class iPSChatbot {
             
             setTimeout(async () => {
                 try {
-                    // Prepare form data for Google Forms
-                    const formData = new FormData();
-                    formData.append('entry.2005620554', this.userData.name); // Full Name
-                    formData.append('entry.1045781291', this.userData.email); // Email Address
-                    formData.append('entry.839337160', this.userData.company || 'Not provided'); // Company/Organization
-                    formData.append('entry.1166974658', this.userData.serviceInterest); // Service Interest
-                    
-                    // Enhanced message with chatbot context
-                    const enhancedMessage = `${this.userData.message}
+                    // Prepare EmailJS template parameters
+                    const templateParams = {
+                        from_name: this.userData.name,
+                        from_email: this.userData.email,
+                        company: this.userData.company || 'Not provided',
+                        service: this.userData.serviceInterest,
+                        message: `${this.userData.message}
 
 [AI Chatbot Submission Details]
 Source: AI Chatbot Conversation
 Session ID: ${this.sessionId}
 Timestamp: ${new Date().toLocaleString()}
 User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}`;
+Page URL: ${window.location.href}`,
+                        to_email: 'info@ipsglobalconsulting.com',
+                        timestamp: new Date().toLocaleString(),
+                        source: 'AI Chatbot'
+                    };
                     
-                    formData.append('entry.1277502806', enhancedMessage); // Message
+                    // Send email using EmailJS
+                    const result = await emailjs.send('service_a6ix8ij', 'template_co99cdj', templateParams);
                     
-                    // Send to Google Forms
-                    const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdyoa3OHqi7RGDhDOSkeXNqzRrIDcgxaCoCbsZsbjwiOnfItw/formResponse', {
-                        method: 'POST',
-                        body: formData,
-                        mode: 'no-cors' // Required for Google Forms
-                    });
-                    
-                    // Google Forms always returns success with no-cors mode
-                    this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
-                    
-                    setTimeout(() => {
-                        this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
+                    if (result.status === 200) {
+                        this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
                         
-                        // Show final options
-                        const inputArea = document.getElementById('ips-chat-input-area');
-                        inputArea.innerHTML = `
-                            <div class="quick-actions">
-                                <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
-                                <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
-                                <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
-                            </div>
-                        `;
-                    }, 1500);
+                        setTimeout(() => {
+                            this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
+                            
+                            // Show final options
+                            const inputArea = document.getElementById('ips-chat-input-area');
+                            inputArea.innerHTML = `
+                                <div class="quick-actions">
+                                    <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
+                                    <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
+                                    <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
+                                </div>
+                            `;
+                        }, 1500);
+                    } else {
+                        throw new Error('EmailJS returned non-200 status: ' + result.status);
+                    }
                     
                 } catch (error) {
                     console.error('Error sending chatbot email:', error);
