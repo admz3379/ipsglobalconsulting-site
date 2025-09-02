@@ -535,56 +535,73 @@ class iPSChatbot {
         return emailRegex.test(email);
     }
 
-    sendToEmail() {
+    async sendToEmail() {
         this.addMessage(`Thank you, ${this.userData.name}! I'm preparing your information for our team. They'll reach out to you within 24 hours to discuss how we can help with ${this.userData.serviceInterest}.`, 'bot');
         
         setTimeout(() => {
             this.addMessage("Your inquiry is being sent now...", 'bot');
             
-            setTimeout(() => {
-                // Create email
-                const subject = encodeURIComponent(`New AI Assistant Lead - ${this.userData.name}`);
-                const body = encodeURIComponent(`
-New AI Assistant Interaction - iPS Consulting Website
-
-Visitor Information:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Name: ${this.userData.name}
-Email: ${this.userData.email}
-Organization: ${this.userData.company || 'Not provided'}
-Service Interest: ${this.userData.serviceInterest}
-
-Message: ${this.userData.message}
-
-Interaction Details:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Session ID: ${this.sessionId}
-Timestamp: ${new Date().toLocaleString()}
-User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}
-
-Next Steps:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-This visitor expressed interest in ${this.userData.serviceInterest} and has provided 
-their contact information for follow-up.
-
-Recommended Action: Reach out within 24 hours for personalized consultation.
-                `.trim());
-                
-                const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${subject}&body=${body}`;
-                window.location.href = mailtoLink;
-                
-                this.addMessage(`✅ Done! Your information has been sent to our team. We'll be in touch soon. Feel free to browse our services while you wait!`, 'bot');
-                
-                // Show final options
-                const inputArea = document.getElementById('ips-chat-input-area');
-                inputArea.innerHTML = `
-                    <div class="quick-actions">
-                        <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
-                        <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
-                        <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
-                    </div>
-                `;
+            setTimeout(async () => {
+                try {
+                    // Prepare form data for submission
+                    const formData = new FormData();
+                    formData.append('name', this.userData.name);
+                    formData.append('email', this.userData.email);
+                    formData.append('company', this.userData.company || 'Not provided');
+                    formData.append('service', this.userData.serviceInterest);
+                    formData.append('message', this.userData.message);
+                    formData.append('_subject', `New AI Chatbot Lead - ${this.userData.name}`);
+                    formData.append('_email', 'info@ipsglobalconsulting.com');
+                    formData.append('source', 'AI Chatbot');
+                    formData.append('session_id', this.sessionId);
+                    formData.append('timestamp', new Date().toLocaleString());
+                    formData.append('user_agent', navigator.userAgent);
+                    formData.append('page_url', window.location.href);
+                    
+                    // Send to Formspree endpoint
+                    const response = await fetch('https://formspree.io/f/mblrovdr', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
+                        
+                        setTimeout(() => {
+                            this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
+                            
+                            // Show final options
+                            const inputArea = document.getElementById('ips-chat-input-area');
+                            inputArea.innerHTML = `
+                                <div class="quick-actions">
+                                    <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
+                                    <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
+                                    <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
+                                </div>
+                            `;
+                        }, 1500);
+                        
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error sending chatbot data:', error);
+                    this.addMessage(`I apologize, but there was an issue sending your information. Please try using our contact form on the website, or email us directly at info@ipsglobalconsulting.com`, 'bot');
+                    
+                    // Show fallback options
+                    const inputArea = document.getElementById('ips-chat-input-area');
+                    inputArea.innerHTML = `
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" onclick="window.location.href='#contact'">Contact Form</button>
+                            <button class="quick-action-btn" onclick="window.location.href='mailto:info@ipsglobalconsulting.com'">Send Email</button>
+                            <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
+                        </div>
+                    `;
+                }
             }, 2000);
         }, 1000);
     }

@@ -1166,8 +1166,11 @@
                     
                     <h4 class="text-xl font-bold mb-6">Send Us a Message</h4>
                     
-                    <form id="contact-form" class="space-y-6">
+                    <form id="contact-form" class="space-y-6" action="https://formspree.io/f/mblrovdr" method="POST">
 
+                        <input type="hidden" name="_redirect" value="https://8000-ipw7tvzmxsojlo8iny3zi-6532622b.e2b.dev/thank-you.html">
+                        <input type="hidden" name="_email" value="info@ipsglobalconsulting.com">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - iPS Consulting">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
                             <input type="text" id="name" name="name" required 

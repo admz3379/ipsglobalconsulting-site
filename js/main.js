@@ -102,17 +102,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            
-            // Basic validation
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
+            // Basic validation before allowing form to submit
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const message = contactForm.querySelector('textarea[name="message"]').value;
             
             if (!name || !email || !message) {
+                e.preventDefault();
                 showFormError('Please fill in all required fields.');
                 return;
             }
@@ -120,71 +116,28 @@ document.addEventListener('DOMContentLoaded', function() {
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                e.preventDefault();
                 showFormError('Please enter a valid email address.');
                 return;
             }
             
+            // Store form data in sessionStorage for thank you page personalization
+            sessionStorage.setItem('contactSubmission', JSON.stringify({
+                name: name,
+                email: email,
+                company: contactForm.querySelector('input[name="company"]').value || 'Not provided',
+                service: contactForm.querySelector('select[name="service"]').value || 'General inquiry',
+                message: message,
+                timestamp: new Date().toLocaleString()
+            }));
+            
             // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Simulate sending email and redirect to thank you page
-            setTimeout(() => {
-                // Create mailto link in background
-                const subject = encodeURIComponent(`Contact Form Submission - ${name}`);
-                const body = encodeURIComponent(`
-Contact Form Submission - iPS Consulting Website
-
-Visitor Information:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Name: ${name}
-Email: ${email}
-Company: ${formData.get('company') || 'Not provided'}
-Service Interest: ${formData.get('service') || 'General inquiry'}
-
-Message:
-${message}
-
-Submission Details:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Timestamp: ${new Date().toLocaleString()}
-User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}
-
-Next Steps:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-This visitor has submitted a contact form and is expecting a response 
-within 2-3 business days as indicated on the website.
-
-Recommended Action: Reach out promptly to maintain excellent customer service.
-                `.trim());
-                
-                const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${subject}&body=${body}`;
-                
-                // Store form data in sessionStorage for thank you page
-                sessionStorage.setItem('contactSubmission', JSON.stringify({
-                    name: name,
-                    email: email,
-                    company: formData.get('company') || 'Not provided',
-                    service: formData.get('service') || 'General inquiry',
-                    message: message,
-                    timestamp: new Date().toLocaleString()
-                }));
-                
-                // Open mailto link in background (hidden iframe)
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = mailtoLink;
-                document.body.appendChild(iframe);
-                
-                // Redirect to thank you page after a brief delay
-                setTimeout(() => {
-                    window.location.href = 'thank-you.html';
-                }, 500);
-                
-            }, 1500); // Simulate processing time
+            // Allow form to submit naturally to Formspree
+            // Formspree will redirect to thank-you.html automatically
         });
     }
     
