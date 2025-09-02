@@ -48,12 +48,16 @@
                 </div>
                 
                 <h1 class="text-4xl font-bold mb-6" style="color: #1E3A8A;">
-                    Thank You for Contacting Us!
+                    Thank You<span id="user-name"></span> for Contacting Us!
                 </h1>
                 
-                <p class="text-xl mb-8" style="color: #374151;">
+                <p class="text-xl mb-4" style="color: #374151;">
                     Your message has been successfully sent to our team at 
                     <strong style="color: #059669;">info@ipsglobalconsulting.com</strong>
+                </p>
+                
+                <p class="text-lg mb-8" style="color: #6B7280; display: none;" id="service-info">
+                    We've noted your interest in <strong><span id="service-interest"></span></strong> and will tailor our response accordingly.
                 </p>
                 
                 <div class="bg-gray-50 p-6 rounded-lg mb-8">
@@ -111,7 +115,7 @@
                 Risk, Technology & Transformation Advisory
             </p>
             <p class="text-gray-400 text-sm">
-                Dallas, TX • © 2025 iPS Global Consulting, LLC Dallas, TX All rights reserved
+                Dallas, TX • © 2025 iPS Global Consulting, LLC All rights reserved
             </p>
         </div>
     </footer>
@@ -119,5 +123,32 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/chatbot.js"></script>
+    <script>
+        // Display personalized thank you message if form data is available
+        document.addEventListener('DOMContentLoaded', function() {
+            const submissionData = sessionStorage.getItem('contactSubmission');
+            if (submissionData) {
+                try {
+                    const data = JSON.parse(submissionData);
+                    const nameElement = document.querySelector('#user-name');
+                    if (nameElement && data.name) {
+                        nameElement.textContent = ', ' + data.name + ',';
+                    }
+                    
+                    const serviceElement = document.querySelector('#service-interest');
+                    const serviceInfo = document.querySelector('#service-info');
+                    if (serviceElement && serviceInfo && data.service && data.service !== 'General inquiry' && data.service !== '') {
+                        serviceElement.textContent = data.service;
+                        serviceInfo.style.display = 'block';
+                    }
+                    
+                    // Clear the session storage after displaying
+                    sessionStorage.removeItem('contactSubmission');
+                } catch (e) {
+                    console.log('No valid submission data found');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
