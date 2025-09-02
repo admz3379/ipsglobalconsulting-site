@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 
                 // Send email using EmailJS
-                const result = await emailjs.send('service_a6ix8ij', 'template_co99cdj', templateParams);
+                const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
                 
                 if (result.status === 200) {
                     // Store form data for thank you page personalization
