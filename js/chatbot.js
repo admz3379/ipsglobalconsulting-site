@@ -5,7 +5,29 @@ class iPSChatbot {
         this.userData = {};
         this.conversationStep = 'greeting';
         this.sessionId = this.generateSessionId();
+        this.emailjsReady = false;
+        
+        // Initialize EmailJS for chatbot with retry logic
+        this.initEmailJS();
+        
         this.init();
+    }
+    
+    initEmailJS() {
+        // Try to initialize EmailJS immediately
+        if (typeof emailjs !== 'undefined') {
+            try {
+                emailjs.init("JvnKL8PuiWCmeCLpE");
+                this.emailjsReady = true;
+                console.log('Chatbot EmailJS initialized successfully');
+            } catch (error) {
+                console.error('Error initializing EmailJS:', error);
+            }
+        } else {
+            // If EmailJS not ready, wait a bit and try again
+            console.log('EmailJS not ready, will retry...');
+            setTimeout(() => this.initEmailJS(), 1000);
+        }
     }
 
     generateSessionId() {
@@ -543,6 +565,16 @@ class iPSChatbot {
             
             setTimeout(async () => {
                 try {
+                    // Check if EmailJS is ready
+                    if (!this.emailjsReady && typeof emailjs !== 'undefined') {
+                        emailjs.init("JvnKL8PuiWCmeCLpE");
+                        this.emailjsReady = true;
+                    }
+                    
+                    if (typeof emailjs === 'undefined') {
+                        throw new Error('EmailJS library not loaded');
+                    }
+                    
                     // Prepare EmailJS template parameters
                     const templateParams = {
                         from_name: this.userData.name,
@@ -561,6 +593,8 @@ Page URL: ${window.location.href}`,
                         timestamp: new Date().toLocaleString(),
                         source: 'AI Chatbot'
                     };
+                    
+                    console.log('Sending chatbot email with params:', templateParams);
                     
                     // Send email using EmailJS
                     const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
