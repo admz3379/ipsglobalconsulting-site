@@ -543,17 +543,18 @@ class iPSChatbot {
             
             setTimeout(async () => {
                 try {
-                    // Prepare form data for FormSubmit
+                    // Prepare form data for Getform
                     const formData = new FormData();
+                    formData.append('_gotcha', ''); // Honeypot for spam protection
+                    formData.append('subject', `New AI Chatbot Lead - ${this.userData.name}`);
+                    formData.append('from_name', 'iPS Consulting Chatbot');
                     formData.append('name', this.userData.name);
                     formData.append('email', this.userData.email);
                     formData.append('company', this.userData.company || 'Not provided');
                     formData.append('service', this.userData.serviceInterest);
                     formData.append('message', this.userData.message);
-                    formData.append('_subject', `New AI Chatbot Lead - ${this.userData.name}`);
-                    formData.append('_captcha', 'false');
                     
-                    // Additional info for tracking
+                    // Additional chatbot-specific data
                     const additionalInfo = `
 Source: AI Chatbot Conversation
 Session ID: ${this.sessionId}
@@ -561,17 +562,22 @@ Timestamp: ${new Date().toLocaleString()}
 User Agent: ${navigator.userAgent}
 Page URL: ${window.location.href}
 
-Original Message: ${this.userData.message}
+Conversation Summary:
+- Name: ${this.userData.name}
+- Email: ${this.userData.email}
+- Company: ${this.userData.company || 'Not provided'}
+- Service Interest: ${this.userData.serviceInterest}
+- Message: ${this.userData.message}
                     `;
                     formData.append('additional_info', additionalInfo);
                     
-                    // Send to FormSubmit
-                    const response = await fetch('https://formsubmit.co/info@ipsglobalconsulting.com', {
+                    // Send to Getform API  
+                    const response = await fetch('https://getform.io/f/awnnyyqb', {
                         method: 'POST',
                         body: formData
                     });
                     
-                    if (response.ok || response.status === 200) {
+                    if (response.ok) {
                         this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
                         
                         setTimeout(() => {
@@ -589,11 +595,11 @@ Original Message: ${this.userData.message}
                         }, 1500);
                         
                     } else {
-                        throw new Error('Form submission failed with status: ' + response.status);
+                        throw new Error('Getform API returned error status: ' + response.status);
                     }
                     
                 } catch (error) {
-                    console.error('Error sending chatbot data:', error);
+                    console.error('Error sending chatbot email:', error);
                     this.addMessage(`I apologize, but there was an issue sending your information. Please try using our contact form on the website, or email us directly at info@ipsglobalconsulting.com`, 'bot');
                     
                     // Show fallback options

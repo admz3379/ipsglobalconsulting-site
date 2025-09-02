@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Store form data in sessionStorage for thank you page personalization
+            // Store form data for thank you page personalization
             sessionStorage.setItem('contactSubmission', JSON.stringify({
                 name: name,
                 email: email,
@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Let form submit naturally to FormSubmit
-            // FormSubmit will redirect to thank-you.html automatically
+            // Let form submit naturally to Web3Forms
+            // Web3Forms will redirect to thank-you.html automatically
         });
     }
     
