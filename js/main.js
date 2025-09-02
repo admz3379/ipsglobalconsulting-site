@@ -1,7 +1,5 @@
 // Main JavaScript for iPS Consulting Website
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS
-    emailjs.init("iL3VaPoDPauBxBP1D");
     // Mobile menu functionality
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -129,81 +127,69 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            try {
-                // Check EmailJS initialization
-                console.log('EmailJS available:', typeof emailjs !== 'undefined');
-                console.log('EmailJS object:', emailjs);
-                
-                // Prepare EmailJS template parameters
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    company: contactForm.querySelector('input[name="company"]').value || 'Not provided',
-                    service: contactForm.querySelector('select[name="service"]').value || 'General Consultation',
-                    message: message,
-                    to_email: 'info@ipsglobalconsulting.com',
-                    timestamp: new Date().toLocaleString(),
-                    source: 'Website Contact Form'
-                };
-                
-                console.log('Sending email with parameters:', templateParams);
-                console.log('Service ID: service_nd74rr8, Template ID: template_co99cdj');
-                
-                // Send email using EmailJS
-                const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
-                
-                console.log('EmailJS result:', result);
-                
-                if (result.status === 200) {
-                    // Store form data for thank you page personalization
-                    sessionStorage.setItem('contactSubmission', JSON.stringify({
-                        name: name,
-                        email: email,
-                        company: templateParams.company,
-                        service: templateParams.service,
-                        message: message,
-                        timestamp: templateParams.timestamp
-                    }));
-                    
-                    // Success - redirect to thank you page
-                    window.location.href = 'thank-you.html';
-                } else {
-                    throw new Error('EmailJS returned non-200 status');
-                }
-                
-            } catch (error) {
-                console.error('Email sending failed:', error);
-                console.error('Error details:', error.message, error.status, error.text);
-                
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Show detailed error message for debugging
-                let errorMessage = 'Sorry, there was an error sending your message. ';
-                if (error.status) {
-                    errorMessage += `Error ${error.status}: ${error.text}. `;
-                } else if (error.message) {
-                    errorMessage += `${error.message}. `;
-                }
-                errorMessage += 'Please try again or email us directly at info@ipsglobalconsulting.com';
-                
-                showFormError(errorMessage);
-            }
+            // Simple mailto solution that always works
+            const company = contactForm.querySelector('input[name="company"]').value || 'Not provided';
+            const service = contactForm.querySelector('select[name="service"]').value || 'General Consultation';
+            const timestamp = new Date().toLocaleString();
+            
+            // Create email content
+            const subject = `New Contact Form Submission - ${name}`;
+            const body = `
+NEW CONTACT FORM SUBMISSION - iPS Global Consulting
+
+FROM: ${name}
+EMAIL: ${email}
+COMPANY: ${company}
+SERVICE INTEREST: ${service}
+
+MESSAGE:
+${message}
+
+---
+SUBMISSION DETAILS:
+Source: Website Contact Form
+Timestamp: ${timestamp}
+Page URL: ${window.location.href}
+
+This message was generated from the iPS Global Consulting website contact form.
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Store form data for thank you page
+            sessionStorage.setItem('contactSubmission', JSON.stringify({
+                name: name,
+                email: email,
+                company: company,
+                service: service,
+                message: message,
+                timestamp: timestamp
+            }));
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message and redirect after short delay
+            showFormSuccess('Thank you! Your email client is opening with your message pre-filled. Please send the email to complete your inquiry.');
+            
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 3000);
         });
     }
     
     // Helper function to show form errors
     function showFormError(message) {
-        // Remove existing error messages
-        const existingError = document.querySelector('.form-error-message');
-        if (existingError) {
-            existingError.remove();
+        // Remove existing messages
+        const existingMessage = document.querySelector('.form-message');
+        if (existingMessage) {
+            existingMessage.remove();
         }
         
         // Create and show error message
         const errorDiv = document.createElement('div');
-        errorDiv.className = 'form-error-message bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4';
+        errorDiv.className = 'form-message bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4';
         errorDiv.innerHTML = `
             <div class="flex items-center">
                 <i class="fas fa-exclamation-triangle mr-2"></i>
@@ -214,12 +200,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // Insert error message before the form
         contactForm.parentNode.insertBefore(errorDiv, contactForm);
         
-        // Remove error message after 5 seconds
+        // Remove error message after 8 seconds
         setTimeout(() => {
             if (errorDiv.parentNode) {
                 errorDiv.remove();
             }
-        }, 5000);
+        }, 8000);
+    }
+    
+    // Helper function to show form success
+    function showFormSuccess(message) {
+        // Remove existing messages
+        const existingMessage = document.querySelector('.form-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Create and show success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'form-message bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md mb-4';
+        successDiv.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        // Insert success message before the form
+        contactForm.parentNode.insertBefore(successDiv, contactForm);
     }
 
     // Newsletter form handling

@@ -5,29 +5,8 @@ class iPSChatbot {
         this.userData = {};
         this.conversationStep = 'greeting';
         this.sessionId = this.generateSessionId();
-        this.emailjsReady = false;
-        
-        // Initialize EmailJS for chatbot with retry logic
-        this.initEmailJS();
         
         this.init();
-    }
-    
-    initEmailJS() {
-        // Try to initialize EmailJS immediately
-        if (typeof emailjs !== 'undefined') {
-            try {
-                emailjs.init("iL3VaPoDPauBxBP1D");
-                this.emailjsReady = true;
-                console.log('Chatbot EmailJS initialized successfully');
-            } catch (error) {
-                console.error('Error initializing EmailJS:', error);
-            }
-        } else {
-            // If EmailJS not ready, wait a bit and try again
-            console.log('EmailJS not ready, will retry...');
-            setTimeout(() => this.initEmailJS(), 1000);
-        }
     }
 
     generateSessionId() {
@@ -564,75 +543,53 @@ class iPSChatbot {
             this.addMessage("Your inquiry is being sent now...", 'bot');
             
             setTimeout(async () => {
-                try {
-                    // Check if EmailJS is ready
-                    if (!this.emailjsReady && typeof emailjs !== 'undefined') {
-                        emailjs.init("iL3VaPoDPauBxBP1D");
-                        this.emailjsReady = true;
-                    }
-                    
-                    if (typeof emailjs === 'undefined') {
-                        throw new Error('EmailJS library not loaded');
-                    }
-                    
-                    // Prepare EmailJS template parameters
-                    const templateParams = {
-                        from_name: this.userData.name,
-                        from_email: this.userData.email,
-                        company: this.userData.company || 'Not provided',
-                        service: this.userData.serviceInterest,
-                        message: `${this.userData.message}
+                // Simple mailto solution for chatbot
+                const timestamp = new Date().toLocaleString();
+                const subject = `New Chatbot Inquiry - ${this.userData.name}`;
+                const body = `
+NEW CHATBOT INQUIRY - iPS Global Consulting
 
-[AI Chatbot Submission Details]
+FROM: ${this.userData.name}
+EMAIL: ${this.userData.email}
+COMPANY: ${this.userData.company || 'Not provided'}
+SERVICE INTEREST: ${this.userData.serviceInterest}
+
+MESSAGE:
+${this.userData.message}
+
+---
+AI CHATBOT SUBMISSION DETAILS:
 Source: AI Chatbot Conversation
 Session ID: ${this.sessionId}
-Timestamp: ${new Date().toLocaleString()}
+Timestamp: ${timestamp}
 User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}`,
-                        to_email: 'info@ipsglobalconsulting.com',
-                        timestamp: new Date().toLocaleString(),
-                        source: 'AI Chatbot'
-                    };
+Page URL: ${window.location.href}
+
+This message was generated from the iPS Global Consulting website AI chatbot.
+                `.trim();
+                
+                // Create mailto link
+                const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                // Success message
+                this.addMessage(`✅ Perfect! I'm opening your email client with all your information pre-filled. Please send the email to complete your inquiry - our team will respond within 24 hours!`, 'bot');
+                
+                setTimeout(() => {
+                    // Open email client
+                    window.open(mailtoLink, '_blank');
                     
-                    console.log('Sending chatbot email with params:', templateParams);
+                    this.addMessage("Your email client should now be open with your message ready to send. Feel free to browse our services while you wait!", 'bot');
                     
-                    // Send email using EmailJS
-                    const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
-                    
-                    if (result.status === 200) {
-                        this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
-                        
-                        setTimeout(() => {
-                            this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
-                            
-                            // Show final options
-                            const inputArea = document.getElementById('ips-chat-input-area');
-                            inputArea.innerHTML = `
-                                <div class="quick-actions">
-                                    <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
-                                    <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
-                                    <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
-                                </div>
-                            `;
-                        }, 1500);
-                    } else {
-                        throw new Error('EmailJS returned non-200 status: ' + result.status);
-                    }
-                    
-                } catch (error) {
-                    console.error('Error sending chatbot email:', error);
-                    this.addMessage(`I apologize, but there was an issue sending your information. Please try using our contact form on the website, or email us directly at info@ipsglobalconsulting.com`, 'bot');
-                    
-                    // Show fallback options
+                    // Show final options
                     const inputArea = document.getElementById('ips-chat-input-area');
                     inputArea.innerHTML = `
                         <div class="quick-actions">
-                            <button class="quick-action-btn" onclick="window.location.href='#contact'">Contact Form</button>
-                            <button class="quick-action-btn" onclick="window.location.href='mailto:info@ipsglobalconsulting.com'">Send Email</button>
+                            <button class="quick-action-btn" onclick="window.open('${mailtoLink}', '_blank')">📧 Open Email Again</button>
+                            <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
                             <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
                         </div>
                     `;
-                }
+                }, 1500);
             }, 2000);
         }, 1000);
     }

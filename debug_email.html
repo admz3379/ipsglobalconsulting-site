@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EmailJS Debug Test</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <h1>EmailJS Debug Test</h1>
+    <button onclick="testEmailJS()">Test EmailJS</button>
+    <div id="result"></div>
+
+    <script>
+        // Initialize EmailJS with your key
+        emailjs.init("iL3VaPoDPauBxBP1D");
+
+        async function testEmailJS() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing EmailJS...';
+
+            try {
+                console.log('Testing EmailJS configuration...');
+                console.log('API Key: iL3VaPoDPauBxBP1D');
+                console.log('Service ID: service_nd74rr8');
+                console.log('Template ID: template_co99cdj');
+
+                const templateParams = {
+                    from_name: 'Test User',
+                    from_email: 'test@example.com',
+                    company: 'Test Company',
+                    service: 'General Consultation',
+                    message: 'This is a test message from the debug page.',
+                    to_email: 'info@ipsglobalconsulting.com',
+                    timestamp: new Date().toLocaleString(),
+                    source: 'Debug Test Page'
+                };
+
+                console.log('Sending with parameters:', templateParams);
+
+                const result = await emailjs.send('service_nd74rr8', 'template_co99cdj', templateParams);
+                
+                console.log('EmailJS Success:', result);
+                resultDiv.innerHTML = `✅ Success! Status: ${result.status}, Text: ${result.text}`;
+
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                resultDiv.innerHTML = `❌ Error: ${error.message || error.text || error}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -60,3 +60,13 @@ Serving directory: /home/user/webapp
 02/Sep/2025 21:39:23 - "GET /js/chatbot.js HTTP/1.1" 200 -
 02/Sep/2025 21:39:23 - code 404, message File not found
 02/Sep/2025 21:39:23 - "GET /favicon.ico HTTP/1.1" 404 -
+Server running on port 8000
+Serving directory: /home/user/webapp
+Server running on port 8000
+Serving directory: /home/user/webapp
+02/Sep/2025 23:10:36 - "GET / HTTP/1.1" 200 -
+02/Sep/2025 23:10:36 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 23:10:36 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 23:10:37 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 23:10:37 - code 404, message File not found
+02/Sep/2025 23:10:37 - "GET /favicon.ico HTTP/1.1" 404 -
