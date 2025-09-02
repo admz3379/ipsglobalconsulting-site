@@ -1,0 +1,28 @@
+2025-09-02 19:19:40,517 INFO RPC interface 'supervisor' initialized
+2025-09-02 19:19:40,517 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-09-02 19:19:40,519 INFO daemonizing the supervisord process
+2025-09-02 19:19:40,520 INFO supervisord started with pid 1741
+2025-09-02 19:19:41,524 INFO spawned: 'webserver' with pid 1767
+2025-09-02 19:19:42,635 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 19:20:49,848 INFO waiting for webserver to stop
+2025-09-02 19:20:49,850 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 19:20:49,854 INFO spawned: 'webserver' with pid 2527
+2025-09-02 19:20:49,955 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 19:20:50,958 INFO spawned: 'webserver' with pid 2529
+2025-09-02 19:20:51,055 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 19:20:53,062 INFO spawned: 'webserver' with pid 2532
+2025-09-02 19:20:53,174 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 19:20:56,181 INFO spawned: 'webserver' with pid 2538
+2025-09-02 19:20:57,318 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 20:24:44,947 INFO waiting for webserver to stop
+2025-09-02 20:24:44,950 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 20:24:44,955 INFO spawned: 'webserver' with pid 7164
+2025-09-02 20:24:46,031 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 20:40:15,633 INFO waiting for webserver to stop
+2025-09-02 20:40:15,634 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 20:40:15,637 INFO spawned: 'webserver' with pid 8852
+2025-09-02 20:40:16,717 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 20:53:08,602 INFO waiting for webserver to stop
+2025-09-02 20:53:08,609 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 20:53:08,613 INFO spawned: 'webserver' with pid 11014
+2025-09-02 20:53:09,709 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

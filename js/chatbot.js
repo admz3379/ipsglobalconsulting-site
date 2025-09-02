@@ -543,7 +543,7 @@ class iPSChatbot {
             
             setTimeout(async () => {
                 try {
-                    // Prepare form data for submission
+                    // Prepare form data for FormSubmit
                     const formData = new FormData();
                     formData.append('name', this.userData.name);
                     formData.append('email', this.userData.email);
@@ -551,23 +551,27 @@ class iPSChatbot {
                     formData.append('service', this.userData.serviceInterest);
                     formData.append('message', this.userData.message);
                     formData.append('_subject', `New AI Chatbot Lead - ${this.userData.name}`);
-                    formData.append('_email', 'info@ipsglobalconsulting.com');
-                    formData.append('source', 'AI Chatbot');
-                    formData.append('session_id', this.sessionId);
-                    formData.append('timestamp', new Date().toLocaleString());
-                    formData.append('user_agent', navigator.userAgent);
-                    formData.append('page_url', window.location.href);
+                    formData.append('_captcha', 'false');
                     
-                    // Send to Formspree endpoint
-                    const response = await fetch('https://formspree.io/f/mblrovdr', {
+                    // Additional info for tracking
+                    const additionalInfo = `
+Source: AI Chatbot Conversation
+Session ID: ${this.sessionId}
+Timestamp: ${new Date().toLocaleString()}
+User Agent: ${navigator.userAgent}
+Page URL: ${window.location.href}
+
+Original Message: ${this.userData.message}
+                    `;
+                    formData.append('additional_info', additionalInfo);
+                    
+                    // Send to FormSubmit
+                    const response = await fetch('https://formsubmit.co/info@ipsglobalconsulting.com', {
                         method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        body: formData
                     });
                     
-                    if (response.ok) {
+                    if (response.ok || response.status === 200) {
                         this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
                         
                         setTimeout(() => {
@@ -585,7 +589,7 @@ class iPSChatbot {
                         }, 1500);
                         
                     } else {
-                        throw new Error('Form submission failed');
+                        throw new Error('Form submission failed with status: ' + response.status);
                     }
                     
                 } catch (error) {

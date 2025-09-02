@@ -1,0 +1,40 @@
+Server running on port 8000
+Serving directory: /home/user/webapp
+02/Sep/2025 19:19:53 - "GET / HTTP/1.1" 200 -
+02/Sep/2025 19:19:54 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 19:19:54 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 19:19:54 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 19:19:54 - code 404, message File not found
+02/Sep/2025 19:19:54 - "GET /favicon.ico HTTP/1.1" 404 -
+Server running on port 8000
+Serving directory: /home/user/webapp
+02/Sep/2025 19:21:07 - "GET / HTTP/1.1" 200 -
+02/Sep/2025 19:21:08 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 19:21:09 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 19:21:09 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 19:21:09 - code 404, message File not found
+02/Sep/2025 19:21:09 - "GET /favicon.ico HTTP/1.1" 404 -
+Server running on port 8000
+Serving directory: /home/user/webapp
+02/Sep/2025 20:24:51 - "GET / HTTP/1.1" 200 -
+02/Sep/2025 20:24:52 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 20:24:52 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 20:24:53 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 20:24:53 - code 404, message File not found
+02/Sep/2025 20:24:53 - "GET /favicon.ico HTTP/1.1" 404 -
+02/Sep/2025 20:25:04 - "GET /thank-you.html HTTP/1.1" 200 -
+02/Sep/2025 20:25:04 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 20:25:04 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 20:25:04 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 20:25:05 - code 404, message File not found
+02/Sep/2025 20:25:05 - "GET /favicon.ico HTTP/1.1" 404 -
+Server running on port 8000
+Serving directory: /home/user/webapp
+02/Sep/2025 20:40:20 - "GET / HTTP/1.1" 200 -
+02/Sep/2025 20:40:21 - "GET /css/style.css HTTP/1.1" 200 -
+02/Sep/2025 20:40:22 - "GET /js/main.js HTTP/1.1" 200 -
+02/Sep/2025 20:40:22 - "GET /js/chatbot.js HTTP/1.1" 200 -
+02/Sep/2025 20:40:22 - code 404, message File not found
+02/Sep/2025 20:40:22 - "GET /favicon.ico HTTP/1.1" 404 -
+Server running on port 8000
+Serving directory: /home/user/webapp

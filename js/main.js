@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            // Basic validation before allowing form to submit
+            // Basic validation before submitting
             const name = contactForm.querySelector('input[name="name"]').value;
             const email = contactForm.querySelector('input[name="email"]').value;
             const message = contactForm.querySelector('textarea[name="message"]').value;
@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Allow form to submit naturally to Formspree
-            // Formspree will redirect to thank-you.html automatically
+            // Let form submit naturally to FormSubmit
+            // FormSubmit will redirect to thank-you.html automatically
         });
     }
     
