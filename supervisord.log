@@ -30,3 +30,19 @@
 2025-09-02 21:11:26,867 WARN stopped: webserver (terminated by SIGTERM)
 2025-09-02 21:11:26,872 INFO spawned: 'webserver' with pid 13987
 2025-09-02 21:11:27,968 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 21:39:06,949 INFO waiting for webserver to stop
+2025-09-02 21:39:06,950 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 21:39:06,954 INFO spawned: 'webserver' with pid 16850
+2025-09-02 21:39:08,031 INFO success: webserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-09-02 21:39:51,605 INFO waiting for webserver to stop
+2025-09-02 21:39:51,607 WARN stopped: webserver (terminated by SIGTERM)
+2025-09-02 21:39:51,610 INFO spawned: 'webserver' with pid 17008
+2025-09-02 21:39:51,698 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 21:39:52,702 INFO spawned: 'webserver' with pid 17011
+2025-09-02 21:39:52,786 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 21:39:54,792 INFO spawned: 'webserver' with pid 17014
+2025-09-02 21:39:54,884 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 21:39:58,747 INFO spawned: 'webserver' with pid 17021
+2025-09-02 21:39:58,853 WARN exited: webserver (exit status 1; not expected)
+2025-09-02 21:39:59,855 INFO gave up: webserver entered FATAL state, too many start retries too quickly
+2025-09-02 21:40:09,981 WARN received SIGTERM indicating exit request

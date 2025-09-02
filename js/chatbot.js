@@ -543,60 +543,48 @@ class iPSChatbot {
             
             setTimeout(async () => {
                 try {
-                    // Prepare form data for Getform
+                    // Prepare form data for Google Forms
                     const formData = new FormData();
-                    formData.append('_gotcha', ''); // Honeypot for spam protection
-                    formData.append('subject', `New AI Chatbot Lead - ${this.userData.name}`);
-                    formData.append('from_name', 'iPS Consulting Chatbot');
-                    formData.append('name', this.userData.name);
-                    formData.append('email', this.userData.email);
-                    formData.append('company', this.userData.company || 'Not provided');
-                    formData.append('service', this.userData.serviceInterest);
-                    formData.append('message', this.userData.message);
+                    formData.append('entry.2005620554', this.userData.name); // Full Name
+                    formData.append('entry.1045781291', this.userData.email); // Email Address
+                    formData.append('entry.839337160', this.userData.company || 'Not provided'); // Company/Organization
+                    formData.append('entry.1166974658', this.userData.serviceInterest); // Service Interest
                     
-                    // Additional chatbot-specific data
-                    const additionalInfo = `
+                    // Enhanced message with chatbot context
+                    const enhancedMessage = `${this.userData.message}
+
+[AI Chatbot Submission Details]
 Source: AI Chatbot Conversation
 Session ID: ${this.sessionId}
 Timestamp: ${new Date().toLocaleString()}
 User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}
-
-Conversation Summary:
-- Name: ${this.userData.name}
-- Email: ${this.userData.email}
-- Company: ${this.userData.company || 'Not provided'}
-- Service Interest: ${this.userData.serviceInterest}
-- Message: ${this.userData.message}
-                    `;
-                    formData.append('additional_info', additionalInfo);
+Page URL: ${window.location.href}`;
                     
-                    // Send to Getform API  
-                    const response = await fetch('https://getform.io/f/awnnyyqb', {
+                    formData.append('entry.1277502806', enhancedMessage); // Message
+                    
+                    // Send to Google Forms
+                    const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdyoa3OHqi7RGDhDOSkeXNqzRrIDcgxaCoCbsZsbjwiOnfItw/formResponse', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        mode: 'no-cors' // Required for Google Forms
                     });
                     
-                    if (response.ok) {
-                        this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
+                    // Google Forms always returns success with no-cors mode
+                    this.addMessage(`✅ Perfect! Your information has been successfully sent to our team at info@ipsglobalconsulting.com. We'll be in touch within 24 hours!`, 'bot');
+                    
+                    setTimeout(() => {
+                        this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
                         
-                        setTimeout(() => {
-                            this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
-                            
-                            // Show final options
-                            const inputArea = document.getElementById('ips-chat-input-area');
-                            inputArea.innerHTML = `
-                                <div class="quick-actions">
-                                    <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
-                                    <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
-                                    <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
-                                </div>
-                            `;
-                        }, 1500);
-                        
-                    } else {
-                        throw new Error('Getform API returned error status: ' + response.status);
-                    }
+                        // Show final options
+                        const inputArea = document.getElementById('ips-chat-input-area');
+                        inputArea.innerHTML = `
+                            <div class="quick-actions">
+                                <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
+                                <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
+                                <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
+                            </div>
+                        `;
+                    }, 1500);
                     
                 } catch (error) {
                     console.error('Error sending chatbot email:', error);

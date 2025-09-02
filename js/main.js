@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             // Basic validation before submitting
-            const name = contactForm.querySelector('input[name="name"]').value;
-            const email = contactForm.querySelector('input[name="email"]').value;
-            const message = contactForm.querySelector('textarea[name="message"]').value;
+            const name = contactForm.querySelector('input[name="entry.2005620554"]').value;
+            const email = contactForm.querySelector('input[name="entry.1045781291"]').value;
+            const message = contactForm.querySelector('textarea[name="entry.1277502806"]').value;
             
             if (!name || !email || !message) {
                 e.preventDefault();
@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
             sessionStorage.setItem('contactSubmission', JSON.stringify({
                 name: name,
                 email: email,
-                company: contactForm.querySelector('input[name="company"]').value || 'Not provided',
-                service: contactForm.querySelector('select[name="service"]').value || 'General inquiry',
+                company: contactForm.querySelector('input[name="entry.839337160"]').value || 'Not provided',
+                service: contactForm.querySelector('select[name="entry.1166974658"]').value || 'General Consultation',
                 message: message,
                 timestamp: new Date().toLocaleString()
             }));
@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Let form submit naturally to Web3Forms
-            // Web3Forms will redirect to thank-you.html automatically
+            // Let form submit naturally to Google Forms
+            // Hidden iframe will handle the redirect to thank-you.html
         });
     }
     
