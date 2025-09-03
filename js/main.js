@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Sending contact form data:', formData);
                 
                 // Send to backend API
+                console.log('Making API call to /api/contact with data:', formData);
                 const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: {
@@ -151,8 +152,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(formData)
                 });
                 
-                const result = await response.json();
-                console.log('Backend response:', result);
+                console.log('Response status:', response.status, 'OK:', response.ok);
+                
+                let result;
+                try {
+                    result = await response.json();
+                    console.log('Backend response:', result);
+                } catch (jsonError) {
+                    console.error('Failed to parse JSON response:', jsonError);
+                    const textResponse = await response.text();
+                    console.log('Raw response text:', textResponse);
+                    throw new Error(`Invalid JSON response (${response.status}): ${textResponse.substring(0, 200)}`);
+                }
                 
                 if (response.ok && result.success) {
                     // Store form data for thank you page
@@ -178,13 +189,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             } catch (error) {
                 console.error('Contact form submission failed:', error);
+                console.error('Error stack:', error.stack);
                 
                 // Reset button state
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Show error message
-                const errorMessage = error.message || 'Sorry, there was an error sending your message. Please try again or email us directly at info@ipsglobalconsulting.com';
+                // Show detailed error message for debugging
+                let errorMessage = 'Sorry, there was an error sending your message. ';
+                if (error.message) {
+                    errorMessage += `Error: ${error.message}. `;
+                }
+                errorMessage += 'Please try again or email us directly at info@ipsglobalconsulting.com';
+                
                 showFormError(errorMessage);
             }
         });

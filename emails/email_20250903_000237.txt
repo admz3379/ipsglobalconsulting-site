@@ -1,0 +1,55 @@
+To: info@ipsglobalconsulting.com
+Subject: New Contact Form Submission - John Smith
+Timestamp: 2025-09-03 00:02:37.495803
+--------------------------------------------------
+
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .header { background-color: #1E3A8A; color: white; padding: 20px; text-align: center; }
+                .content { padding: 20px; }
+                .field { margin-bottom: 15px; }
+                .label { font-weight: bold; color: #1E3A8A; }
+                .value { margin-left: 10px; }
+                .message-box { background-color: #f8f9fa; border-left: 4px solid #1E3A8A; padding: 15px; margin: 20px 0; }
+                .footer { background-color: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #666; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h2>New Contact Form Submission</h2>
+                <p>iPS Global Consulting Website</p>
+            </div>
+            
+            <div class="content">
+                <div class="field">
+                    <span class="label">From:</span>
+                    <span class="value">John Smith &lt;john.smith@example.com&gt;</span>
+                </div>
+                
+                <div class="field">
+                    <span class="label">Company/Organization:</span>
+                    <span class="value">Test Corp</span>
+                </div>
+                
+                <div class="field">
+                    <span class="label">Service Interest:</span>
+                    <span class="value">GRC Maturity & Compliance</span>
+                </div>
+                
+                <div class="message-box">
+                    <div class="label">Message:</div>
+                    <div style="margin-top: 10px;">I am interested in learning more about your GRC maturity assessment services. We are a mid-size company looking to improve our compliance framework.</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p><strong>Submission Details:</strong></p>
+                <p>Source: Website Contact Form</p>
+                <p>Timestamp: September 03, 2025 at 12:02 AM</p>
+                <p>This message was automatically generated from the iPS Global Consulting website contact system.</p>
+            </div>
+        </body>
+        </html>
+        

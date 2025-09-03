@@ -555,6 +555,7 @@ class iPSChatbot {
                     };
                     
                     console.log('Sending chatbot data:', chatbotData);
+                    console.log('Making API call to /api/chatbot');
                     
                     // Send to backend API
                     const response = await fetch('/api/chatbot', {
@@ -565,8 +566,18 @@ class iPSChatbot {
                         body: JSON.stringify(chatbotData)
                     });
                     
-                    const result = await response.json();
-                    console.log('Chatbot backend response:', result);
+                    console.log('Chatbot response status:', response.status, 'OK:', response.ok);
+                    
+                    let result;
+                    try {
+                        result = await response.json();
+                        console.log('Chatbot backend response:', result);
+                    } catch (jsonError) {
+                        console.error('Chatbot: Failed to parse JSON response:', jsonError);
+                        const textResponse = await response.text();
+                        console.log('Chatbot raw response text:', textResponse);
+                        throw new Error(`Invalid JSON response (${response.status}): ${textResponse.substring(0, 200)}`);
+                    }
                     
                     if (response.ok && result.success) {
                         this.addMessage(`✅ ${result.message}`, 'bot');

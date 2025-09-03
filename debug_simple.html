@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple API Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        button { background: #1E3A8A; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 10px 5px; }
+        .result { margin: 10px 0; padding: 15px; border-radius: 4px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>API Debug Tests</h1>
+    <p>Current URL: <code id="current-url"></code></p>
+    
+    <button onclick="testHealth()">Test Health API</button>
+    <button onclick="testContactAPI()">Test Contact API</button>
+    <button onclick="testChatbotAPI()">Test Chatbot API</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        function addResult(title, content, type = 'success') {
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            div.innerHTML = `<h3>${title}</h3><pre>${content}</pre>`;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        async function testHealth() {
+            try {
+                console.log('Testing health endpoint...');
+                const response = await fetch('/api/health');
+                const result = await response.json();
+                
+                addResult('Health Check Success', 
+                    `Status: ${response.status}
+Response: ${JSON.stringify(result, null, 2)}`, 'success');
+                    
+            } catch (error) {
+                console.error('Health check failed:', error);
+                addResult('Health Check Error', error.message, 'error');
+            }
+        }
+        
+        async function testContactAPI() {
+            try {
+                console.log('Testing contact API...');
+                
+                const testData = {
+                    name: 'Debug Test User',
+                    email: 'debug@test.com',
+                    company: 'Debug Company',
+                    service: 'General Consultation',
+                    message: 'This is a debug test message from the simple test page.'
+                };
+                
+                console.log('Sending data:', testData);
+                
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    addResult('Contact API Success', 
+                        `Status: ${response.status}
+Request: ${JSON.stringify(testData, null, 2)}
+Response: ${JSON.stringify(result, null, 2)}`, 'success');
+                } else {
+                    const errorText = await response.text();
+                    addResult('Contact API Error', 
+                        `Status: ${response.status}
+Error: ${errorText}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Contact API failed:', error);
+                addResult('Contact API Error', `Network Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testChatbotAPI() {
+            try {
+                console.log('Testing chatbot API...');
+                
+                const testData = {
+                    name: 'Debug Chatbot User',
+                    email: 'chatbot-debug@test.com',
+                    company: 'Debug Chatbot Co',
+                    service: 'AI Governance & Ethics',
+                    message: 'This is a debug test message from the chatbot test.',
+                    session_id: 'debug_session_123'
+                };
+                
+                console.log('Sending chatbot data:', testData);
+                
+                const response = await fetch('/api/chatbot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                console.log('Chatbot response status:', response.status);
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    addResult('Chatbot API Success', 
+                        `Status: ${response.status}
+Request: ${JSON.stringify(testData, null, 2)}
+Response: ${JSON.stringify(result, null, 2)}`, 'success');
+                } else {
+                    const errorText = await response.text();
+                    addResult('Chatbot API Error', 
+                        `Status: ${response.status}
+Error: ${errorText}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Chatbot API failed:', error);
+                addResult('Chatbot API Error', `Network Error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Auto-test health on load
+        window.addEventListener('load', () => {
+            setTimeout(testHealth, 1000);
+        });
+    </script>
+</body>
+</html>

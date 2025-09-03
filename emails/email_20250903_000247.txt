@@ -1,0 +1,63 @@
+To: info@ipsglobalconsulting.com
+Subject: New AI Chatbot Inquiry - Sarah Johnson
+Timestamp: 2025-09-03 00:02:47.739304
+--------------------------------------------------
+
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .header { background-color: #059669; color: white; padding: 20px; text-align: center; }
+                .content { padding: 20px; }
+                .field { margin-bottom: 15px; }
+                .label { font-weight: bold; color: #059669; }
+                .value { margin-left: 10px; }
+                .message-box { background-color: #f0f9ff; border-left: 4px solid #059669; padding: 15px; margin: 20px 0; }
+                .chatbot-info { background-color: #f8f9fa; border: 1px solid #ddd; padding: 15px; margin: 20px 0; border-radius: 5px; }
+                .footer { background-color: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #666; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h2>🤖 New AI Chatbot Inquiry</h2>
+                <p>iPS Global Consulting Website</p>
+            </div>
+            
+            <div class="content">
+                <div class="field">
+                    <span class="label">From:</span>
+                    <span class="value">Sarah Johnson &lt;sarah@techstartup.com&gt;</span>
+                </div>
+                
+                <div class="field">
+                    <span class="label">Company/Organization:</span>
+                    <span class="value">TechStartup Inc</span>
+                </div>
+                
+                <div class="field">
+                    <span class="label">Service Interest:</span>
+                    <span class="value">AI Governance & Ethics</span>
+                </div>
+                
+                <div class="message-box">
+                    <div class="label">Customer Message:</div>
+                    <div style="margin-top: 10px;">We are developing AI products and need guidance on implementing proper AI governance frameworks and ethical AI practices.</div>
+                </div>
+                
+                <div class="chatbot-info">
+                    <h4 style="margin-top: 0; color: #059669;">AI Chatbot Session Details:</h4>
+                    <p><strong>Session ID:</strong> chatbot_session_456</p>
+                    <p><strong>Interaction Type:</strong> AI-guided consultation</p>
+                    <p><strong>Lead Quality:</strong> High (completed full conversation flow)</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p><strong>Submission Details:</strong></p>
+                <p>Source: AI Chatbot Conversation</p>
+                <p>Timestamp: September 03, 2025 at 12:02 AM</p>
+                <p>This inquiry was generated through the interactive AI chatbot on the iPS Global Consulting website.</p>
+            </div>
+        </body>
+        </html>
+        
