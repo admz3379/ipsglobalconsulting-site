@@ -543,53 +543,65 @@ class iPSChatbot {
             this.addMessage("Your inquiry is being sent now...", 'bot');
             
             setTimeout(async () => {
-                // Simple mailto solution for chatbot
-                const timestamp = new Date().toLocaleString();
-                const subject = `New Chatbot Inquiry - ${this.userData.name}`;
-                const body = `
-NEW CHATBOT INQUIRY - iPS Global Consulting
-
-FROM: ${this.userData.name}
-EMAIL: ${this.userData.email}
-COMPANY: ${this.userData.company || 'Not provided'}
-SERVICE INTEREST: ${this.userData.serviceInterest}
-
-MESSAGE:
-${this.userData.message}
-
----
-AI CHATBOT SUBMISSION DETAILS:
-Source: AI Chatbot Conversation
-Session ID: ${this.sessionId}
-Timestamp: ${timestamp}
-User Agent: ${navigator.userAgent}
-Page URL: ${window.location.href}
-
-This message was generated from the iPS Global Consulting website AI chatbot.
-                `.trim();
-                
-                // Create mailto link
-                const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // Success message
-                this.addMessage(`✅ Perfect! I'm opening your email client with all your information pre-filled. Please send the email to complete your inquiry - our team will respond within 24 hours!`, 'bot');
-                
-                setTimeout(() => {
-                    // Open email client
-                    window.open(mailtoLink, '_blank');
+                try {
+                    // Prepare chatbot data
+                    const chatbotData = {
+                        name: this.userData.name,
+                        email: this.userData.email,
+                        company: this.userData.company || 'Not provided',
+                        service: this.userData.serviceInterest,
+                        message: this.userData.message,
+                        session_id: this.sessionId
+                    };
                     
-                    this.addMessage("Your email client should now be open with your message ready to send. Feel free to browse our services while you wait!", 'bot');
+                    console.log('Sending chatbot data:', chatbotData);
                     
-                    // Show final options
+                    // Send to backend API
+                    const response = await fetch('/api/chatbot', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(chatbotData)
+                    });
+                    
+                    const result = await response.json();
+                    console.log('Chatbot backend response:', result);
+                    
+                    if (response.ok && result.success) {
+                        this.addMessage(`✅ ${result.message}`, 'bot');
+                        
+                        setTimeout(() => {
+                            this.addMessage("Feel free to browse our services while you wait, or close this chat anytime.", 'bot');
+                            
+                            // Show final options
+                            const inputArea = document.getElementById('ips-chat-input-area');
+                            inputArea.innerHTML = `
+                                <div class="quick-actions">
+                                    <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
+                                    <button class="quick-action-btn" onclick="window.location.href='#clients-served'">See Our Clients</button>
+                                    <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
+                                </div>
+                            `;
+                        }, 1500);
+                    } else {
+                        throw new Error(result.error || 'Unknown error occurred');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error sending chatbot data:', error);
+                    this.addMessage(`I apologize, but there was an issue sending your information. Please try using our contact form on the website, or email us directly at info@ipsglobalconsulting.com`, 'bot');
+                    
+                    // Show fallback options
                     const inputArea = document.getElementById('ips-chat-input-area');
                     inputArea.innerHTML = `
                         <div class="quick-actions">
-                            <button class="quick-action-btn" onclick="window.open('${mailtoLink}', '_blank')">📧 Open Email Again</button>
-                            <button class="quick-action-btn" onclick="window.location.href='#services'">Browse Our Services</button>
+                            <button class="quick-action-btn" onclick="window.location.href='#contact'">Contact Form</button>
+                            <button class="quick-action-btn" onclick="window.location.href='mailto:info@ipsglobalconsulting.com'">Send Email</button>
                             <button class="quick-action-btn" onclick="document.getElementById('ips-chat-close').click()">Close Chat</button>
                         </div>
                     `;
-                }, 1500);
+                }
             }, 2000);
         }, 1000);
     }

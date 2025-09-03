@@ -127,55 +127,66 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Simple mailto solution that always works
-            const company = contactForm.querySelector('input[name="company"]').value || 'Not provided';
-            const service = contactForm.querySelector('select[name="service"]').value || 'General Consultation';
-            const timestamp = new Date().toLocaleString();
-            
-            // Create email content
-            const subject = `New Contact Form Submission - ${name}`;
-            const body = `
-NEW CONTACT FORM SUBMISSION - iPS Global Consulting
-
-FROM: ${name}
-EMAIL: ${email}
-COMPANY: ${company}
-SERVICE INTEREST: ${service}
-
-MESSAGE:
-${message}
-
----
-SUBMISSION DETAILS:
-Source: Website Contact Form
-Timestamp: ${timestamp}
-Page URL: ${window.location.href}
-
-This message was generated from the iPS Global Consulting website contact form.
-            `.trim();
-            
-            // Create mailto link
-            const mailtoLink = `mailto:info@ipsglobalconsulting.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Store form data for thank you page
-            sessionStorage.setItem('contactSubmission', JSON.stringify({
-                name: name,
-                email: email,
-                company: company,
-                service: service,
-                message: message,
-                timestamp: timestamp
-            }));
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message and redirect after short delay
-            showFormSuccess('Thank you! Your email client is opening with your message pre-filled. Please send the email to complete your inquiry.');
-            
-            setTimeout(() => {
-                window.location.href = 'thank-you.html';
-            }, 3000);
+            try {
+                // Prepare form data
+                const company = contactForm.querySelector('input[name="company"]').value || 'Not provided';
+                const service = contactForm.querySelector('select[name="service"]').value || 'General Consultation';
+                
+                const formData = {
+                    name: name,
+                    email: email,
+                    company: company,
+                    service: service,
+                    message: message
+                };
+                
+                console.log('Sending contact form data:', formData);
+                
+                // Send to backend API
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                console.log('Backend response:', result);
+                
+                if (response.ok && result.success) {
+                    // Store form data for thank you page
+                    sessionStorage.setItem('contactSubmission', JSON.stringify({
+                        name: name,
+                        email: email,
+                        company: company,
+                        service: service,
+                        message: message,
+                        timestamp: new Date().toLocaleString()
+                    }));
+                    
+                    // Show success message
+                    showFormSuccess(result.message);
+                    
+                    // Redirect to thank you page after short delay
+                    setTimeout(() => {
+                        window.location.href = 'thank-you.html';
+                    }, 2000);
+                } else {
+                    throw new Error(result.error || 'Unknown error occurred');
+                }
+                
+            } catch (error) {
+                console.error('Contact form submission failed:', error);
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show error message
+                const errorMessage = error.message || 'Sorry, there was an error sending your message. Please try again or email us directly at info@ipsglobalconsulting.com';
+                showFormError(errorMessage);
+            }
         });
     }
     
