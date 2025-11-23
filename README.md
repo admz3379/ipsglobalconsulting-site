@@ -74,22 +74,22 @@ This website positions iPS as an authentic, methodology-driven consulting firm w
 - **Lead Magnet**: Audit Readiness Checklist (PDF)
 - **Expertise**: Fortune 500 and public sector compliance validation
 
-### **Ketan - Third-Party Risk Specialist**
+### Third-Party Risk Specialist**
 - **Specialty**: Vendor due diligence, SaaS onboarding, contract governance, continuous monitoring
 - **Lead Magnet**: Vendor Risk Lifecycle (PDF)
 - **Insight**: "40% of exceptions originate with third parties"
 
-### **Akia - Technology Risk & Governance Lead**
+### Technology Risk & Governance Lead**
 - **Specialty**: CI/CD controls, cloud compliance (AWS/Azure/GCP), risk dashboards
 - **Lead Magnet**: Risk Dashboard Sample (PDF/Image)
 - **Focus**: Technology risk acceleration in CI/CD and cloud migrations
 
-### **Melissa - Program Management & Process Improvement Partner**
+### **Program Management & Process Improvement Partner**
 - **Specialty**: Agile PMO, D4 lifecycle (Define-Design-Develop-Deploy), automation, change management
 - **Lead Magnet**: Process Improvement One-Pager (PDF)
 - **Results**: Teams reduce audit findings by 30-60% through automation
 
-### **Blake - Emerging Tech & Training Strategist**
+### **Emerging Tech & Training Strategist**
 - **Specialty**: AI/GenAI governance (NIST AI RMF, EU AI Act, ISO/IEC 42001), staff training, LMS
 - **Lead Magnets**: Corporate Training & Awareness One-Pager (PDF) | TechStep Program Outline (PDF)
 - **Routing**: Differentiates between corporate training and individual career development
