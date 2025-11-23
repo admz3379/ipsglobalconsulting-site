@@ -101,48 +101,254 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-16 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="home" class="pt-16 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-white" style="position: relative; min-height: 100vh; display: flex; align-items: center;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
             <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    <span style="color: #EA580C">Risk</span>, <span style="color: #1E3A8A">Technology</span><br>
-                    & <span style="color: #059669">Transformation</span> <span style="color: #374151">Advisory</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-                    Methodology-driven consulting solutions across Risk Management, Technology Governance, 
-                    and Organizational Transformation for Fortune 500, Government, and Global Organizations.
+                <!-- Brand Name Above Headline -->
+                <div class="mb-8">
+                    <p class="text-blue-300 text-sm font-medium tracking-widest uppercase mb-4">
+                        Innovative Project Solutions
+                    </p>
+                </div>
+                
+                <!-- Pre-headline -->
+                <p class="text-blue-300 text-sm font-medium tracking-widest uppercase mb-6">
+                    For Growing Organizations Trapped in Outdated Systems
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://calendly.com/ipsglobalconsulting-info/30min" target="_blank" class="text-white px-8 py-3 rounded-md font-semibold transition-colors" style="background-color: #1E3A8A;" onmouseover="this.style.backgroundColor='#1E40AF'" onmouseout="this.style.backgroundColor='#1E3A8A'">
-                        <i class="fas fa-calendar-check mr-2"></i>Schedule Free Consultation
+                
+                <!-- Main Headline -->
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Integrate Your Technology.<br>
+                    Protect Your Growth.
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
+                    We connect your disconnected systems and secure your operations—eliminating the financial, operational, and strategic risks that hold growing businesses back.
+                </p>
+                
+                <!-- Value Props -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-link text-3xl text-blue-300"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Integration</h3>
+                        <p class="text-blue-200 text-sm">Connect systems that work together</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-3xl text-orange-300"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Protection</h3>
+                        <p class="text-blue-200 text-sm">Build security into everything we do</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-3xl text-green-300"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Growth</h3>
+                        <p class="text-blue-200 text-sm">Scale confidently without the chaos</p>
+                    </div>
+                </div>
+                
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="https://calendly.com/ipsglobalconsulting-info/30min" target="_blank" class="bg-white text-blue-900 px-8 py-4 rounded-md font-semibold hover:bg-gray-100 transition-colors text-lg">
+                        Schedule Free Consultation
                     </a>
-                    <a href="#services" class="text-white px-8 py-3 rounded-md font-semibold transition-colors border-2 border-white" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
-                        Explore Our Services
+                    <a href="#approach" class="border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white hover:text-blue-900 transition-colors text-lg">
+                        See How We Work
                     </a>
                 </div>
             </div>
         </div>
         
-        <!-- Trust Indicators -->
-        <div class="bg-white bg-opacity-10 py-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <p class="text-blue-200 text-xs font-medium tracking-widest uppercase mb-6">EXPERTISE ACROSS INDUSTRIES</p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                        <a href="fortune-500-financial-services.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
-                            <p class="text-white text-sm font-medium">Fortune 500 Financial Services</p>
-                        </a>
-                        <a href="government-public-sector.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
-                            <p class="text-white text-sm font-medium">Government & Public Sector</p>
-                        </a>
-                        <a href="educational-institutions.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
-                            <p class="text-white text-sm font-medium">Educational Institutions</p>
-                        </a>
-                        <a href="global-non-profit-organizations.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
-                            <p class="text-white text-sm font-medium">Global Non-Profit Organizations</p>
-                        </a>
-                    </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl opacity-50"></i>
+        </div>
+    </section>
+    
+    <!-- Trust Indicators -->
+    <div class="bg-white bg-opacity-10 py-8" style="background: linear-gradient(to bottom right, #1f2937, #1e3a8a);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-blue-200 text-xs font-medium tracking-widest uppercase mb-6">EXPERTISE ACROSS INDUSTRIES</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <a href="fortune-500-financial-services.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                        <p class="text-white text-sm font-medium">Fortune 500 Financial Services</p>
+                    </a>
+                    <a href="government-public-sector.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                        <p class="text-white text-sm font-medium">Government & Public Sector</p>
+                    </a>
+                    <a href="educational-institutions.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                        <p class="text-white text-sm font-medium">Educational Institutions</p>
+                    </a>
+                    <a href="global-non-profit-organizations.html" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg px-4 py-3 transition-all duration-300 hover:bg-opacity-20 hover:scale-105 cursor-pointer block">
+                        <p class="text-white text-sm font-medium">Global Non-Profit Organizations</p>
+                    </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Recognition Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #1E3A8A;">
+                    Is Your Business Trapped in These Risks?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Growing organizations face hidden dangers from disconnected systems
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Financial Impact -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dollar-sign text-3xl text-red-600 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Financial Impact</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Revenue leaking through disconnected systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Hidden costs in manual processes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Budget waste on misaligned technology</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Cash flow blindspots</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Operational Impact -->
+                <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-8 rounded-lg border-l-4 border-yellow-500 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cogs text-3xl text-yellow-600 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Operational Impact</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Business disruption from system failures</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Key person dependencies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Cannot scale current operations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Vendor chaos and data silos</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Strategic Impact -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-lg border-l-4 border-blue-500 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chess text-3xl text-blue-600 mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Strategic Impact</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-blue-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Technology limiting future options</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-blue-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Security vulnerabilities threatening reputation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-blue-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Compliance gaps blocking growth</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-blue-600 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Competitive disadvantage from outdated systems</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://calendly.com/ipsglobalconsulting-info/30min" target="_blank" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-md font-semibold hover:bg-blue-700 transition-colors">
+                    Identify Your Hidden Risks →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The iPS Integration Advantage -->
+    <section id="approach" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #1E3A8A;">
+                    The iPS Integration Advantage
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We're different from traditional consultants—we bridge business and technology to deliver real solutions
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Problem Solver -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Problem Solver</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We diagnose root causes and deliver solutions that create measurable business outcomes—not just implement technology.
+                    </p>
+                </div>
+
+                <!-- The Integrator -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-project-diagram text-4xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">The Integrator</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We connect your business strategy, technology systems, and security controls into a cohesive ecosystem that actually works together.
+                    </p>
+                </div>
+
+                <!-- The Protector -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-4xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">The Protector</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We build security into every solution, protecting your financial, operational, and strategic future—not just your IT infrastructure.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Differentiator Box -->
+            <div class="bg-blue-900 text-white p-8 rounded-lg text-center">
+                <h4 class="text-2xl font-bold mb-4">What Makes Us Different</h4>
+                <p class="text-blue-100 text-lg max-w-4xl mx-auto leading-relaxed">
+                    Unlike traditional consultants who advise and leave, or IT firms that build without business context, 
+                    we integrate business + technology + security to solve real problems.
+                </p>
             </div>
         </div>
     </section>
