@@ -1,0 +1,11 @@
+# Logs and runtime artifacts
+*.log
+*.pid
+
+# Local server leftovers
+web_server.py
+supervisord.conf
+
+# Temporary HTML backups
+index_backup.html
+index_uploaded.html

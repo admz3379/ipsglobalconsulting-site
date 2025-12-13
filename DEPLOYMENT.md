@@ -49,6 +49,15 @@ Update your domain's DNS settings:
   - `185.199.110.153`
   - `185.199.111.153`
 
+## ☁️ **Cloudflare Pages Deployment Steps**
+
+The site is fully static (HTML/CSS/JS only) and ready for Cloudflare Pages—no server processes or runtime logs are required.
+
+1. Push this repository to GitHub or any Git provider supported by Cloudflare.
+2. In Cloudflare Pages, create a new project and select this repository.
+3. Set the **Build Output Directory** to the repository root (no build command needed).
+4. Deploy, then map your custom domain in Cloudflare with HTTPS enabled.
+
 ## 📧 **Contact Form Configuration**
 
 ### **For GitHub Pages:**
